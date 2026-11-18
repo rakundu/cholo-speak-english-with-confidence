@@ -1,0 +1,36 @@
+Installing Cholo on her phone (Nothing / any Android) — about 5 minutes
+=====================================================================
+Nothing to download from the Play Store. Cholo installs from Chrome.
+
+1. Send her the PERSONAL LINK (see START-HERE.txt, part B) on WhatsApp.
+   She taps it. If it opens inside WhatsApp, she taps ⋮ → "Open in Chrome".
+2. At the top of Cholo there is a box "📲 Put Cholo on your phone's home
+   screen". She taps the Install button → Install. (If there's no button,
+   the box shows 3 Bengali steps: ⋮ → Install app → Install.)
+   A Cholo icon appears on the home screen. From now on, she just taps the icon.
+3. Open Cholo from the icon. Tap ▶ Start once.
+   When the phone asks "Allow Cholo to use your microphone?" → tap "Allow"
+   (choose "While using the app" if offered).
+
+CHECK THE BRITISH VOICE (important)
+4. In Cholo: ⚙️ Settings → "Test voice". It should sound British.
+   If it doesn't, or the app says no British voice was found:
+   phone Settings → search "Text-to-speech" → Preferred engine: Speech Services
+   by Google → tap ⚙️ → Install voice data → English (United Kingdom) → download.
+   Then close and reopen Cholo.
+
+CHECK LISTENING
+5. On any "Now you say it" card, tap 🎤 and speak. If nothing happens:
+   phone Settings → Apps → Chrome (and Cholo) → Permissions → Microphone → Allow.
+   Speech recognition uses Google's speech service, which is already on
+   Android phones with Google apps (Nothing phones have it).
+
+GOOD TO KNOW
+- Internet: needed the first time, for the AI coach, and for the phone to
+  understand her speech. Lessons, the British voice (once downloaded) and
+  revision also work offline.
+- Progress saves by itself on the phone. Don't uninstall the app or "clear
+  data" for Chrome, as that would wipe it. (Settings → Moving to a new phone
+  has a backup code, for family use only.)
+- Text size: Settings → Text size → Extra large, if needed.
+- Keep Chrome updated (Play Store → Chrome → Update).
