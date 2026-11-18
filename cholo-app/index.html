@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cholo – Speak English with confidence</title>
+<meta name="theme-color" content="#0F5E63">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Noto+Sans+Bengali:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBF6EC;--card:#fff;--ink:#1E2833;--muted:#5B6672;--pri:#0F5E63;--pri-soft:#E1EFEE;--gold:#C9821F;--gold-soft:#FFF2DA;--ok:#2E7D4F;--ok-soft:#E4F3EA;--line:#E6DDCB;--lav:#EEF0FB;
+ --s:#2456A6;--v:#B0132F;--o:#167257;--t:#7A4BB0;--fs:21px}
+html{font-size:var(--fs)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Atkinson Hyperlegible","Noto Sans Bengali",system-ui,sans-serif;line-height:1.45;-webkit-text-size-adjust:100%}
+.bn{font-family:"Noto Sans Bengali","Atkinson Hyperlegible",sans-serif}
+.no-bn .bnh{display:none!important}
+#app{max-width:560px;margin:0 auto;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;padding:16px 18px 22px;box-sizing:border-box}
+button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.btn{display:flex;align-items:center;justify-content:center;gap:.5em;width:100%;min-height:64px;border-radius:18px;border:2px solid transparent;font-size:1.08rem;font-weight:700;padding:.55em 1em;box-sizing:border-box;text-align:center}
+.btn:active{transform:scale(.985)}
+.btn-pri{background:var(--pri);color:#fff}
+.btn-sec{background:#fff;border-color:var(--line)}
+.btn-soft{background:var(--pri-soft);color:var(--pri)}
+.btn small{display:block;font-weight:400;font-size:.8rem;opacity:.85}
+.btn-col{flex-direction:column;gap:2px}
+.row{display:flex;gap:12px}.row>*{flex:1}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.grid3 .btn{font-size:.92rem;min-height:84px;padding:.4em .3em}
+.mt{margin-top:12px}.mt2{margin-top:20px}
+.stack>*+*{margin-top:12px}
+.card{background:var(--card);border-radius:22px;padding:18px;border:1px solid var(--line)}
+h1{font-size:1.45rem;margin:.15em 0;line-height:1.25}
+h2{font-size:1.12rem;margin:1.2em 0 .5em}
+.muted{color:var(--muted)}
+.small{font-size:.88rem}
+.big-en{font-size:1.5rem;font-weight:700;line-height:1.3;margin:.2em 0 .1em}
+.huge-bn{font-size:1.4rem;font-weight:600;line-height:1.45;margin:.3em 0}
+.meaning{font-size:1.05rem;color:var(--muted);margin-top:6px}
+.chip{display:inline-flex;align-items:center;gap:.35em;font-size:.82rem;font-weight:700;padding:.3em .8em;border-radius:99px;background:var(--pri-soft);color:var(--pri);margin-bottom:10px}
+.chip.gold{background:var(--gold-soft);color:#8A5710}
+.tip{background:var(--gold-soft);border-radius:16px;padding:12px 14px;margin-top:12px;font-size:.95rem}
+.mn{background:var(--lav);border-radius:16px;padding:12px 14px;margin-top:10px;font-size:.98rem}
+.mn b{display:block;font-size:.82rem;color:#4A4F86;margin-bottom:2px}
+.topbar{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.prog{flex:1;height:10px;background:var(--line);border-radius:99px;overflow:hidden}
+.prog>i{display:block;height:100%;background:var(--pri);border-radius:99px;transition:width .4s}
+.pill{border:2px solid var(--line);background:#fff;border-radius:99px;padding:8px 14px;font-size:.88rem;font-weight:700;min-height:44px}
+.linkbtn{background:none;border:none;color:var(--muted);font-size:.92rem;padding:12px;text-decoration:underline;display:block;margin:4px auto 0}
+.speak-row{display:flex;gap:10px;margin:12px 0 4px;flex-wrap:wrap}
+.icon-btn{min-height:54px;padding:0 18px;border-radius:16px;border:2px solid var(--pri-soft);background:var(--pri-soft);color:var(--pri);font-size:1rem;font-weight:700;display:inline-flex;align-items:center;gap:.4em}
+.icon-btn.light{background:#fff;border-color:var(--line);color:var(--ink)}
+.icon-btn.sm{min-height:40px;padding:0 10px;font-size:.85rem;border-radius:12px}
+.play-big{width:96px;height:96px;border-radius:50%;border:none;background:var(--pri);color:#fff;font-size:2.4rem;display:grid;place-items:center;margin:8px auto}
+.bubble{background:var(--pri-soft);border-radius:20px 20px 20px 6px;padding:14px 16px;font-size:1.25rem;font-weight:700;line-height:1.35}
+.bubble.me{background:var(--ok-soft);border-radius:20px 20px 6px 20px;margin-left:24px}
+.bubble.sm{font-size:1rem;padding:10px 12px;font-weight:400}
+.who{font-size:.85rem;color:var(--muted);margin:2px 0 6px;font-weight:700}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:2px solid var(--line);border-radius:18px;padding:14px 16px;min-height:64px;font-size:1.08rem;font-weight:700;box-sizing:border-box}
+.opt+.opt{margin-top:10px}
+.opt .bn{display:block;font-weight:400;font-size:.95rem;color:var(--muted);margin-top:2px}
+.opt.correct{background:var(--ok-soft);border-color:var(--ok)}
+.opt.wrong{background:var(--gold-soft);border-color:var(--gold)}
+.opt[disabled]{cursor:default;color:inherit}
+.opt.dim{opacity:.55}
+.feedback{font-size:1.2rem;font-weight:700;margin:14px 0 2px}
+.say-box{margin-top:14px;border:2px dashed var(--line);border-radius:18px;padding:12px 14px}
+.say-title{font-weight:700}
+.micfb{margin-top:8px;font-weight:700}
+.bottom{margin-top:auto;padding-top:18px}
+.hero{background:var(--pri);color:#fff;border-radius:24px;padding:20px}
+.hero .btn-pri{background:#fff;color:var(--pri)}
+.hero .muted{color:#D3E7E5}
+.calm{text-align:center;padding:24px 8px}
+.calm .em{font-size:3.4rem}
+.fade{animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.r{font-weight:700;border-bottom:3px solid;padding:0 1px}
+.r-s{color:var(--s);border-color:var(--s)}.r-v{color:var(--v);border-color:var(--v)}.r-o{color:var(--o);border-color:var(--o)}.r-t{color:var(--t);border-color:var(--t)}
+.pattern{font-size:1.25rem;line-height:1.6;margin:12px 0;padding:12px 14px;background:#FAF8F3;border-radius:14px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.8rem;margin-bottom:8px}
+.legend span{font-weight:700}
+.ex{border-top:1px solid var(--line);padding:10px 0}
+.ex-en{font-size:1.1rem;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.ex-bn{color:var(--muted);margin-top:2px}
+.blank{display:inline-block;min-width:3.2em;border-bottom:3px solid var(--gold);text-align:center;color:var(--ok);font-weight:700}
+.answer-line{min-height:62px;font-size:1.3rem;font-weight:700;padding:10px 12px;border:2px dashed var(--line);border-radius:16px;background:#FAF8F3;line-height:1.5}
+.tiles{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.tile{min-height:56px;padding:0 18px;border-radius:14px;border:2px solid var(--line);background:#fff;font-size:1.15rem;font-weight:700;box-shadow:0 2px 0 var(--line)}
+.shake{animation:shake .35s}
+@keyframes shake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+label{display:block;font-weight:700;margin:16px 0 6px}
+input,select,textarea{font:inherit;font-size:1rem;width:100%;box-sizing:border-box;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:#fff;color:var(--ink);min-height:54px}
+textarea{min-height:90px;font-size:.8rem}
+.stop{display:flex;gap:12px;align-items:center;padding:8px 0}
+.dot{width:46px;height:46px;border-radius:50%;background:#fff;border:3px solid var(--line);display:grid;place-items:center;font-size:1.25rem;flex:none}
+.stop.done .dot{border-color:var(--ok);background:var(--ok-soft)}
+.stop.cur .dot{border-color:var(--pri);background:var(--pri-soft)}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:4px 0 2px}
+.bar>i{display:block;height:100%;background:var(--ok)}
+.stats{display:flex;gap:10px}
+.stat{flex:1;background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px;text-align:center;font-size:.9rem}
+.stat b{display:block;font-size:1.5rem;color:var(--pri)}
+.phr{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 14px 12px}
+.phr+.phr{margin-top:10px}
+.phr .en{font-size:1.12rem;font-weight:700}
+.acts{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.acts button{min-height:46px;padding:0 14px;border-radius:14px;border:2px solid var(--line);background:#fff;font-weight:700}
+.overlay{position:fixed;inset:0;background:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:28px;z-index:20;text-align:center;overflow:auto}
+.overlay.left{justify-content:flex-start;text-align:left;align-items:stretch}
+.overlay .huge{font-size:2.3rem;font-weight:700;line-height:1.3}
+.warn{background:#FDECEC;border-radius:14px;padding:12px 14px;font-size:.9rem}
+.center{text-align:center}
+.lrow{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px 12px;margin-top:8px;min-height:60px}
+.lrow .ic{font-size:1.4rem;width:34px;text-align:center}
+.lrow b{display:block}
+.num{display:inline-block;font-size:.75rem;font-weight:700;color:var(--muted);background:#F1ECE1;border-radius:8px;padding:1px 7px;margin-right:6px}
+.badge{font-size:.75rem;font-weight:700;color:var(--pri)}
+.sum{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-top:10px;font-size:.95rem}
+.sum .x{color:#9A6B2E;text-decoration:line-through}
+.choicebar{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 4px}
+.choicebar button{min-height:48px;padding:0 14px;border-radius:14px;border:2px solid var(--line);background:#fff;font-weight:700;font-size:1rem}
+.choicebar button.on{border-color:currentColor;background:#F6F9FF}
+.cb-s button.on{color:var(--s)}.cb-v button.on{color:var(--v)}.cb-o button.on{color:var(--o)}
+.hl{background:var(--gold-soft);border-radius:6px;padding:0 3px}
+.word-big{font-size:2rem;font-weight:700;color:var(--pri);line-height:1.2}
+.timerbar{height:16px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:12px}.timerbar>i{display:block;height:100%;width:0;background:var(--ok);transition:width 1s linear}
+.mistake{background:#FDE7C8;border-bottom:3px solid var(--gold);border-radius:4px;padding:0 2px}
+.mistake.soft{background:#EEF0FB;border-color:#8B8FD0}
+.heard{font-size:1.08rem;line-height:1.6;background:#FAF8F3;border-radius:12px;padding:10px 12px}
+.fix{border-left:5px solid var(--gold);padding:10px 12px;margin-top:10px;background:#fff;border-radius:10px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fix.soft{border-left-color:#8B8FD0}
+.fx-wrong{text-decoration:line-through;color:#9A6B2E}
+.fx-right{font-weight:700;color:var(--ok);font-size:1.12rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.rep-head{font-size:1.2rem;font-weight:700}
+.pw{display:inline-block;padding:3px 8px;border-radius:10px;margin:3px 2px;font-weight:700;border:none;font-size:1.05rem}
+.pw.g{background:var(--ok-soft);color:var(--ok)}.pw.a{background:var(--gold-soft);color:#8A5710}.pw.r{background:#FDE4E1;color:#A3392B}.pw.m{background:#EEE;color:#888;text-decoration:line-through}
+.stars{font-size:1.5rem;letter-spacing:2px}
+.ai-wait{margin-top:12px;padding:10px 12px;border-radius:12px;background:var(--lav);font-weight:700}
+.coach-badge{display:inline-block;font-size:.75rem;font-weight:700;color:#4A4F86;background:var(--lav);border-radius:99px;padding:2px 10px}
+.plus-s{background:var(--gold-soft);color:#8A5710;border-radius:6px;padding:0 3px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="content-1.js"></script>
+<script src="content-2.js"></script>
+<script src="content-3.js"></script>
+<script src="content-4.js"></script>
+<script src="content-5.js"></script>
+<script src="content-6.js"></script>
+<script src="content-order.js"></script>
+<script src="checker.js"></script>
+<script src="config.js"></script>
+<script src="coach.js"></script>
+<script>
+"use strict";
+const WHO={son:{en:'my son',bn:'ছেলের',nom:'ছেলে'},daughter:{en:'my daughter',bn:'মেয়ের',nom:'মেয়ে'},family:{en:'my family',bn:'পরিবারের',nom:'পরিবার'}};
+const STAY={'2w':{en:'two weeks',bn:'দুই সপ্তাহের'},'3w':{en:'three weeks',bn:'তিন সপ্তাহের'},'1m':{en:'one month',bn:'এক মাসের'},'2m':{en:'two months',bn:'দুই মাসের'},'3m':{en:'three months',bn:'তিন মাসের'},'6m':{en:'six months',bn:'ছয় মাসের'}};
+const TIPS=[
+ {en:"Forgetting is normal at any age. Every time you remember something again, it sticks a little better.",bn:"ভুলে যাওয়া স্বাভাবিক। প্রতিবার আবার মনে করলে আরও পাকা হয়।"},
+ {en:"You read English well — that's a big strength. If you can't follow, ask: 'Could you write it down, please?'",bn:"আপনি ভালো ইংরেজি পড়তে পারেন — এটাই আপনার শক্তি!",say:"Could you write it down, please?"},
+ {en:"British English often drops the 'r': car sounds like 'kaa', water like 'waw-tuh'.",bn:"ব্রিটিশরা শেষের 'r' প্রায় বলেই না: car = 'কা', water = 'ওয়াটা'।",say:"Car. Water. Better."},
+ {en:"British people say 'sorry' a lot — even when you bump into them!",bn:"ব্রিটিশরা কথায় কথায় 'sorry' বলে!",say:"Oh, sorry!"},
+ {en:"Always join the queue (the line). Everyone waits their turn.",bn:"Queue = 'কিউ' — Q অক্ষরের লেজের মতো লম্বা লাইন!",say:"Is this the queue?"},
+ {en:"'Cheers' and 'Ta' both mean thank you.",bn:"'Cheers' আর 'Ta' — দুটোরই মানে ধন্যবাদ।",say:"Cheers! Ta!"},
+ {en:"Say your phrases out loud while making tea. Speaking helps memory more than reading.",bn:"চা বানাতে বানাতে জোরে জোরে বলুন — পড়ার চেয়ে বলা বেশি মনে থাকে।"},
+ {en:"Speaking slowly is not a weakness. Slow and clear is the best English.",bn:"আস্তে বলা দুর্বলতা নয় — আস্তে আর স্পষ্ট বলাই সেরা ইংরেজি।"},
+ {en:"English order: Who → Action → What. 'I drink tea', not 'I tea drink'.",bn:"ইংরেজিতে কাজের শব্দ মাঝখানে: I drink tea।",say:"I drink tea."},
+ {en:"Many words are the same in India and Britain: lift, flat, chemist, petrol. You already know lots!",bn:"লিফট, ফ্ল্যাট, পেট্রল — এসব শব্দ বিলেতেও একই!"},
+ {en:"'Pardon?' is one little word that means 'Please say that again.'",bn:"'Pardon?' — এক শব্দেই 'আর একবার বলবেন?'",say:"Pardon?"},
+ {en:"He for a man, she for a woman. Go slowly — it's the most common slip for Bengali speakers.",bn:"পুরুষ = he, মহিলা = she। ধীরে বলুন।",say:"He is my brother. She is my sister."},
+ {en:"Five minutes of BBC radio or news each day trains your ears for the British accent.",bn:"রোজ পাঁচ মিনিট BBC শুনুন — কান ব্রিটিশ উচ্চারণে অভ্যস্ত হবে।"},
+ {en:"Make your own sentences all day: 'I am cooking. I like this song.' Talking to yourself is great practice!",bn:"সারাদিন নিজে নিজে ছোট বাক্য বলুন — এটাই সেরা অনুশীলন!"},
+ {en:"A small mistake? No problem. People care more about 'please' and 'thank you' than perfect grammar.",bn:"ভুল হলে চিন্তা নেই — 'please' আর 'thank you' বেশি জরুরি।"}
+];
+const OK_MSG=["🌟 Lovely!","👏 Well done!","✨ Brilliant!","🌼 শাবাশ!","👍 Spot on!","😊 Perfect!"];
+const NO_MSG=["That's alright — this is the one.","Not yet — it will come!","Good try! Here's the right one.","No problem — now you know."];
+const INTERVALS=[0,1,2,4,7,12,20,30,45,60];
+const TYPE_LABEL={roleplay:'🎭 Role-play',word:'📝 New word',phrase:'🗣️ Say it',listen:'👂 Listen',reply:'💬 Reply',grammar:'✨ Better English',fill:'✏️ Fill the gap',build:'🧩 Build a sentence',concept:'📐 Grammar idea',speak:'🎤 Speak freely',dialog:'🎭 Conversation'};
+
+/* ---------------- State ---------------- */
+const KEY='cholo-v1';
+const DEFAULTS={setupDone:false,name:'',who:'family',city:'Manchester',home:'Kolkata',stay:'3w',trip:'',minutes:12,newPerDay:3,size:'l',rate:0.85,bengali:true,mic:true,autoplay:true,voice:'',coachUrl:'',coachToken:''};
+let storageOk=true;
+function blank(){return {settings:{...DEFAULTS},cards:{},days:0,lastDay:null,lastDoneDay:null,newToday:{day:null,n:0},fixes:[],talk:{}};}
+function merge(d){const b=blank(); if(!d||typeof d!=='object')return b; b.savedAt=d.savedAt||0; b.settings={...DEFAULTS,...(d.settings||{})}; if(b.settings.newPerDay==='auto')b.settings.newPerDay=3; if(d.cards&&typeof d.cards==='object')b.cards=d.cards; ['days','lastDay','lastDoneDay'].forEach(k=>{if(d[k]!==undefined)b[k]=d[k];}); if(d.newToday)b.newToday=d.newToday; if(Array.isArray(d.fixes))b.fixes=d.fixes; if(d.talk&&typeof d.talk==='object')b.talk=d.talk; return b;}
+function load(){let d=null; try{d=JSON.parse(localStorage.getItem(KEY));}catch(e){storageOk=false;} return merge(d);}
+/* Second copy in IndexedDB, so progress survives even if one store is cleared. */
+let idb=null;
+function idbOpen(){ return new Promise(res=>{ try{ const r=indexedDB.open('cholo',1); r.onupgradeneeded=()=>r.result.createObjectStore('kv'); r.onsuccess=()=>{idb=r.result;res(idb);}; r.onerror=()=>res(null);}catch(e){res(null);} }); }
+function idbPut(v){ try{ if(!idb)return; idb.transaction('kv','readwrite').objectStore('kv').put(v,KEY);}catch(e){} }
+function idbGet(){ return new Promise(res=>{ try{ if(!idb)return res(null); const r=idb.transaction('kv').objectStore('kv').get(KEY); r.onsuccess=()=>res(r.result||null); r.onerror=()=>res(null);}catch(e){res(null);} }); }
+function save(){ S.savedAt=Date.now(); const j=JSON.stringify(S); try{localStorage.setItem(KEY,j);storageOk=true;}catch(e){storageOk=false;} idbPut(j); }
+let persisted=false;
+function askPersist(){ try{ if(navigator.storage&&navigator.storage.persist) navigator.storage.persist().then(v=>{persisted=v;}).catch(()=>{}); }catch(e){} }
+let S=load();
+idbOpen().then(async()=>{ const j=await idbGet(); if(!j){ if(S.settings.setupDone)idbPut(JSON.stringify(S)); return; }
+ try{ const d=JSON.parse(j); if((d.savedAt||0)>(S.savedAt||0)&&!SES){ S=merge(d); S.savedAt=d.savedAt; loadFixItems(); try{localStorage.setItem(KEY,j);}catch(e){} render(); } }catch(e){} });
+askPersist();
+function dayNum(d){d=d||new Date(); return Math.floor((d.getTime()-d.getTimezoneOffset()*60000)/86400000);}
+function daysLeft(){ const tr=S.settings.trip; if(!tr||!/^\d{4}-\d{2}-\d{2}$/.test(tr))return null; const [y,m,d]=tr.split('-').map(Number); return dayNum(new Date(y,m-1,d,12))-dayNum(); }
+const isTravel=it=>TRAVEL_LESSONS.has(it.ln.id);
+
+/* ---------------- Helpers ---------------- */
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function fill(s){ if(!s)return ''; const st=S.settings; const w=WHO[st.who]||WHO.family; const y=STAY[st.stay]||STAY['3w'];
+ return String(s).replace(/\{name\}/g,(st.name||'').trim()||'(your name)').replace(/\{whoBn\}/g,w.bn).replace(/\{whoNom\}/g,w.nom).replace(/\{who\}/g,w.en)
+  .replace(/\{city\}/g,(st.city||'').trim()||'London').replace(/\{home\}/g,(st.home||'').trim()||'Kolkata').replace(/\{stayBn\}/g,y.bn).replace(/\{stay\}/g,y.en);}
+const F_=s=>esc(fill(s));
+const strip=s=>fill(s).replace(/\{[svot]:([^}]*)\}/g,'$1');
+const roles=s=>esc(fill(s)).replace(/\{([svot]):([^}]*)\}/g,'<span class="r r-$1">$2</span>');
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function shuffle(n){const a=[...Array(n).keys()]; for(let i=n-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a;}
+const fullFill=it=>it.text.replace('___',it.opts[it.a]);
+function displayText(it){ switch(it.t){case 'roleplay':return it.title; case 'word':return it.w+' — '+it.en; case 'phrase':case 'listen':case 'build':return it.en; case 'reply':case 'grammar':return it.opts[it.a]; case 'fill':return fullFill(it); case 'concept':return it.title; case 'speak':return it.en; case 'dialog':return it.title;} return ''; }
+function sayText(it){ switch(it.t){case 'roleplay':return (it.turns.find(t=>t.they)||it.turns[0]).ex; case 'word':return it.w+'. '+it.en; case 'phrase':case 'listen':return it.say||it.en; case 'build':return it.en; case 'reply':case 'grammar':return it.opts[it.a]; case 'fill':return fullFill(it); case 'concept':return strip(it.ex[0][0]); case 'speak':return it.ex;} return ''; }
+const byId=Object.fromEntries(ITEMS.map(i=>[i.id,i]));
+/* Her own corrections become revision cards ("Which is better English?") */
+const FIX_LESSON={id:'myfixes',part:0,icon:'✏️',en:'My corrections',bn:'আমার শুধরে নেওয়া',items:[]};
+function fixItem(f){ return {id:'fix:'+f.k,t:'grammar',u:'myfixes',opts:[f.r,f.w],a:0,bn:'',tip:f.why,mn:f.bn,ln:FIX_LESSON,num:'✏️'}; }
+function loadFixItems(){ for(let i=ITEMS.length-1;i>=0;i--) if(ITEMS[i].u==='myfixes'){ delete byId[ITEMS[i].id]; ITEMS.splice(i,1); }
+ (S.fixes||[]).forEach(f=>{ const it=fixItem(f); ITEMS.push(it); byId[it.id]=it; }); }
+function addFixes(res){
+ if(!SES||SES.mode==='preview') return 0; const t=dayNum(); let n=0;
+ (res.cards||[]).filter(c=>c.w!==c.r).forEach(c=>{ const k=_h(c.r.toLowerCase()); if(S.fixes.some(x=>x.k===k))return;
+   const rec={k,w:c.w,r:c.r,why:c.why,bn:c.bn,day:t}; S.fixes.push(rec); const it=fixItem(rec); ITEMS.push(it); byId[it.id]=it;
+   S.cards[it.id]={box:1,due:t+1,seen:0,lapses:0,last:t}; n++; });
+ if(S.fixes.length>120){ S.fixes=S.fixes.slice(-120); loadFixItems(); }
+ if(n)save(); return n;
+}
+loadFixItems();
+
+/* ---------------- Speech out ---------------- */
+const synth=window.speechSynthesis||null; let voices=[];
+function loadVoices(){ if(!synth)return; try{voices=synth.getVoices()||[];}catch(e){voices=[];} const sel=document.getElementById('voiceSel'); if(sel)fillVoiceSelect(sel); }
+if(synth){ loadVoices(); try{synth.addEventListener('voiceschanged',loadVoices);}catch(e){synth.onvoiceschanged=loadVoices;} }
+const gbVoices=()=>voices.filter(v=>/^en[-_]GB/i.test(v.lang));
+function pickVoice(){ const gb=gbVoices(); if(S.settings.voice){const v=gb.find(v=>v.name===S.settings.voice); if(v)return v;} return gb.find(v=>/google/i.test(v.name))||gb[0]||null; }
+let speakToken=0;
+function speak(text,opt){ opt=opt||{}; if(!synth||!text){opt.onend&&opt.onend();return;}
+ const tok=++speakToken; try{ synth.cancel(); }catch(e){}
+ setTimeout(()=>{ if(tok!==speakToken)return; try{ const u=new SpeechSynthesisUtterance(strip(text).replace(/\s*\(your name\)/g,'')); const v=pickVoice(); if(v)u.voice=v; u.lang=v?v.lang:'en-GB';
+   u.rate=(+S.settings.rate||0.85)*(opt.slow?0.7:1); u.pitch=opt.pitch||1; if(opt.onend){u.onend=()=>{if(tok===speakToken)opt.onend();};u.onerror=u.onend;} synth.speak(u);}catch(e){opt.onend&&opt.onend();} },60);
+}
+let seqId=0;
+function speakSeq(lines){ const my=++seqId; const step=i=>{ if(i>=lines.length||my!==seqId)return; speak(lines[i].text,{pitch:lines[i].pitch,onend:()=>setTimeout(()=>step(i+1),300)}); }; step(0); }
+function speakRow(text){ return `<div class="speak-row"><button class="icon-btn" data-act="say" data-text="${esc(text)}">🔊 Listen</button><button class="icon-btn light" data-act="say" data-arg="slow" data-text="${esc(text)}">🐢 Slowly</button></div>`; }
+
+/* ---------------- Speech in (optional, gentle) ---------------- */
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition||null; let micBroken=false; let recog=null;
+const CONTR={"i'm":"i am","it's":"it is","that's":"that is","i've":"i have","isn't":"is not","don't":"do not","can't":"can not","cannot":"can not","where's":"where is","what's":"what is","you're":"you are","i'd":"i would","let's":"let us","didn't":"did not","i'll":"i will","we're":"we are","there's":"there is"};
+function words(s){ return strip(s).toLowerCase().replace(/[’]/g,"'").split(/\s+/).map(w=>w.replace(/[^a-z0-9'£]/g,'')).filter(Boolean).flatMap(w=>(CONTR[w]||w).split(' ')).map(w=>w.replace(/'/g,'')); }
+function overlap(target,heard){ const t=words(target), h=words(heard); if(!t.length)return 0; const pool={}; h.forEach(w=>pool[w]=(pool[w]||0)+1); let hit=0; t.forEach(w=>{if(pool[w]){hit++;pool[w]--;}}); return hit/t.length; }
+function micBlock(text,free,title){
+ const can=S.settings.mic&&SR&&!micBroken;
+ return `<div class="say-box"><div class="say-title">${title||'🗣️ Now you say it — out loud'}</div><div class="bn bnh muted small">এবার জোরে জোরে বলুন</div>
+ ${!free&&pronAvailable()?`<button class="btn btn-soft mt" data-act="pronrec" data-text="${esc(text)}">🎤 Say it — your coach will listen</button><div id="micfb" class="micfb" aria-live="polite"></div>`
+   :can?`<button class="btn btn-soft mt" data-act="mic" data-text="${esc(text)}" ${free?'data-free="1"':''}>🎤 Let the phone listen</button><div id="micfb" class="micfb" aria-live="polite"></div>`:''}</div>`;
+}
+/* ---------- Longer listening (talk) + speaking report ---------- */
+let talk=null;
+function talkAvailable(){ return !!(S.settings.mic&&SR&&!micBroken); }
+function startTalk(){
+ if(!talkAvailable()) return false; try{synth&&synth.cancel();}catch(e){}
+ talk={finals:[],interim:'',active:true,errored:false};
+ const go=()=>{ let r; try{r=new SR();}catch(e){micBroken=true;talk.active=false;return;} talk.r=r;
+  r.lang='en-GB'; r.continuous=true; r.interimResults=true; r.maxAlternatives=1;
+  r.onresult=e=>{ if(!talk)return; let interim=''; for(let i=e.resultIndex;i<e.results.length;i++){ const x=e.results[i]; if(x.isFinal) talk.finals.push(x[0].transcript); else interim+=x[0].transcript; } talk.interim=interim; };
+  r.onerror=e=>{ if(['not-allowed','service-not-allowed','audio-capture'].includes(e.error)){ micBroken=true; if(talk){talk.active=false;talk.errored=true;} } };
+  r.onend=()=>{ if(!talk)return; if(talk.active){ setTimeout(()=>{ if(talk&&talk.active) go(); },150); } else if(talk.onDone){ const f=talk.onDone; talk.onDone=null; f(); } };
+  try{r.start();}catch(e){} };
+ go(); return true;
+}
+function stopTalk(cb){
+ if(!talk){cb('',false);return;} const tk=talk; tk.active=false;
+ const done=()=>{ const t=(tk.finals.join(' ')+' '+(tk.interim||'')).replace(/\s+/g,' ').trim(); if(talk===tk)talk=null; cb(t,tk.errored); };
+ tk.onDone=done; try{tk.r&&tk.r.stop();}catch(e){} setTimeout(()=>{ if(tk.onDone){ tk.onDone=null; done(); } },1800);
+}
+function abortTalk(){ if(talk){ talk.active=false; talk.onDone=null; try{talk.r&&talk.r.abort();}catch(e){} talk=null; } }
+function fullCorrected(res){ let out='',k=0; res.fixes.filter(f=>!f.soft).forEach(f=>{out+=res.text.slice(k,f.start)+f.better;k=f.end;}); return out+res.text.slice(k); }
+function coachContext(){
+ const e=SES&&SES.q[SES.i]; if(!e||!e.it) return {};
+ const it=e.it, lvl=['','easy','medium','hard'];
+ if(it.t==='roleplay'){ const t=it.turns[Math.min(CS.turn,it.turns.length-1)]; return {task:fill(t.task)+' (role-play: '+fill(it.title)+')',they:fill(t.they),example:fill(t.ex),level:lvl[it.level]}; }
+ if(it.t==='speak') return {task:fill(it.en),example:fill(it.ex)};
+ return {task:'Say: '+fill(sayText(it))};
+}
+function reportHead(res,itId){
+ const prev=(S.talk&&itId)?S.talk[itId]:null; const isPrev=SES&&SES.mode==='preview'; let best='';
+ if(itId&&!isPrev){ if(prev&&res.words>prev.best) best=` 🏅 New best! (before: ${prev.best})`; else if(prev) best=` · Your best: ${prev.best}`;
+   S.talk[itId]={best:Math.max(res.words,prev?prev.best:0),last:res.words}; save(); }
+ return `<div class="rep-head">🌟 You said ${res.words} words!<span class="small" style="font-weight:400">${best}</span></div>`;
+}
+function addFixCards(cards){
+ if(!SES||SES.mode==='preview') return 0; const t=dayNum(); let n=0;
+ cards.filter(c=>c&&c.w&&c.r&&c.w!==c.r).forEach(c=>{ const k=_h(c.r.toLowerCase()); if(S.fixes.some(x=>x.k===k))return;
+   const rec={k,w:c.w,r:c.r,why:c.why||'',bn:c.bn||'',day:t}; S.fixes.push(rec); const it=fixItem(rec); ITEMS.push(it); byId[it.id]=it;
+   S.cards[it.id]={box:1,due:t+1,seen:0,lapses:0,last:t}; n++; });
+ if(S.fixes.length>120){ S.fixes=S.fixes.slice(-120); loadFixItems(); }
+ if(n)save(); return n;
+}
+function localReportBody(res,added){
+ const hard=res.fixes.filter(f=>!f.soft), soft=res.fixes.filter(f=>f.soft);
+ let h=`<div class="who mt">What I heard:</div><div class="heard">${CK.markText(res)}</div>`;
+ if(hard.length){
+  h+=`<div class="who mt">✏️ Let's correct ${hard.length===1?'this':'these '+hard.length}:</div>`+hard.map(f=>`<div class="fix">
+    <div class="small muted">You said:</div><div class="fx-wrong">${esc(f.said)}</div>
+    <div class="small muted" style="margin-top:4px">Better:</div><div class="fx-right">${esc(f.better)} <button class="icon-btn sm" data-act="say" data-text="${esc(f.rightLine.replace(/…/g,''))}">🔊</button></div>
+    <div class="small" style="margin-top:6px">💡 ${esc(f.why)}</div><div class="small bn bnh muted">${esc(f.bn)}</div></div>`).join('');
+  h+=`<button class="btn btn-soft mt" data-act="say" data-text="${esc(fullCorrected(res))}">🔊 Hear it all said correctly</button>`;
+  if(added) h+=`<div class="small muted mt">✏️ ${added===1?'This correction':'These corrections'} will come back in your revision, so you practise the right way.</div>`;
+ }
+ if(soft.length){ h+=`<div class="who mt">🔎 Please check:</div>`+soft.map(f=>`<div class="fix soft"><div><b>${esc(f.said)}</b></div><div class="small" style="margin-top:4px">💡 ${esc(f.why)}</div><div class="small bn bnh muted">${esc(f.bn)}</div></div>`).join(''); }
+ if(!hard.length&&!soft.length) h+=`<div class="tip">✅ I didn't find any of the common mistakes I check for. Lovely!</div>`;
+ if(res.good.length) h+=`<div class="small mt">👍 Good: you ${res.good.join(', ')}.</div>`;
+ h+=`<div class="small muted mt">The phone checks for common mistakes only. It can miss some, and sometimes it mishears — if a word looks wrong, it may be the phone, not you!</div>`;
+ return h;
+}
+function aiReportBody(ai,res,added){
+ const corr=Array.isArray(ai.corrections)?ai.corrections.filter(c=>c&&c.better):[]; const pr=Array.isArray(ai.pronunciation)?ai.pronunciation.filter(p=>p&&(p.maybe||p.tip)):[];
+ let marked=esc(res.text); corr.forEach(c=>{ if(c.said){ const e=esc(c.said); const i=marked.toLowerCase().indexOf(e.toLowerCase()); if(i>=0) marked=marked.slice(0,i)+'<span class="mistake">'+marked.slice(i,i+e.length)+'</span>'+marked.slice(i+e.length); } });
+ let h=`<div class="tip" style="background:var(--ok-soft)">🌟 ${esc(ai.praise||'Well done for speaking!')}<div class="bn bnh small">${esc(ai.praise_bn||'')}</div></div>
+  <div class="who mt">What I heard:</div><div class="heard">${marked}</div>`;
+ if(corr.length){
+  h+=`<div class="who mt">✏️ Your coach suggests:</div>`+corr.map(c=>`<div class="fix">
+    ${c.said?`<div class="small muted">You said:</div><div class="fx-wrong">${esc(c.said)}</div>`:''}
+    <div class="small muted" style="margin-top:4px">Better:</div><div class="fx-right">${esc(c.better)} <button class="icon-btn sm" data-act="say" data-text="${esc(c.sentence_better||c.better)}">🔊</button></div>
+    ${c.why?`<div class="small" style="margin-top:6px">💡 ${esc(c.why)}</div>`:''}${c.why_bn?`<div class="small bn bnh muted">${esc(c.why_bn)}</div>`:''}</div>`).join('');
+ } else if(ai.all_good!==false){ h+=`<div class="tip">✅ No mistakes — lovely, natural English!</div>`; }
+ if(pr.length){ h+=`<div class="who mt">🗣️ Sounds to practise:</div>`+pr.map(p=>`<div class="fix soft">${p.heard&&p.maybe?`<div class="small">The phone heard “${esc(p.heard)}” — you probably said <b>${esc(p.maybe)}</b>.</div>`:''}
+    ${p.maybe?`<button class="icon-btn sm mt" data-act="say" data-arg="slow" data-text="${esc(p.maybe)}">🔊 ${esc(p.maybe)}</button>`:''}
+    ${p.tip?`<div class="small" style="margin-top:6px">💡 ${esc(p.tip)}</div>`:''}${p.tip_bn?`<div class="small bn bnh muted">${esc(p.tip_bn)}</div>`:''}</div>`).join(''); }
+ if(ai.corrected&&corr.length) h+=`<button class="btn btn-soft mt" data-act="say" data-text="${esc(ai.corrected)}">🔊 Hear it all said correctly</button>`;
+ if(ai.better_way) h+=`<div class="who mt">✨ A natural British way to say it:</div><div class="bubble me" style="margin-left:0">${esc(ai.better_way)}</div><button class="icon-btn sm mt" data-act="say" data-text="${esc(ai.better_way)}">🔊 Listen</button>`;
+ if(ai.encourage) h+=`<div class="tip mt">💛 ${esc(ai.encourage)}<div class="bn bnh small">${esc(ai.encourage_bn||'')}</div></div>`;
+ if(added) h+=`<div class="small muted mt">✏️ ${added===1?'This correction':'These corrections'} will come back in your revision.</div>`;
+ return h+`<div class="mt"><span class="coach-badge">🤖 Checked by your AI coach</span></div>`;
+}
+function showReport(text,target,itId){
+ if(!target)return; const res=CK.check(text);
+ if(!res.words){ target.innerHTML=`<div class="tip">I couldn't hear any words. That's alright — try again a little louder, or type what you said below.</div>`; return; }
+ const head=reportHead(res,itId);
+ const useAI=COACH.info.coach&&navigator.onLine!==false;
+ if(!useAI){ const added=addFixCards(res.cards||[]); target.innerHTML=head+localReportBody(res,added); return; }
+ const token=Math.random(); target.dataset.tok=token;
+ target.innerHTML=head+`<div class="ai-wait">🤖 Your coach is checking what you said…</div>`+`<div class="small muted mt">Quick check while you wait:</div>`+localReportBody(res,0);
+ COACH.check(res.text,coachContext()).then(ai=>{
+  if(target.dataset.tok!=String(token)||!document.body.contains(target))return;
+  const cards=(Array.isArray(ai.corrections)?ai.corrections:[]).filter(c=>c&&c.said&&c.better).map(c=>{ const r=String(c.sentence_better||c.better); const i=r.toLowerCase().indexOf(String(c.better).toLowerCase());
+    const w=i>=0?r.slice(0,i)+c.said+r.slice(i+String(c.better).length):c.said; return {w,r,why:c.why,bn:c.why_bn}; });
+  const added=addFixCards(cards); target.innerHTML=head+aiReportBody(ai,res,added);
+ }).catch(()=>{
+  if(target.dataset.tok!=String(token)||!document.body.contains(target))return;
+  const added=addFixCards(res.cards||[]); target.innerHTML=head+`<div class="small muted mt">🤖 The coach couldn't be reached just now, so the phone checked it instead.</div>`+localReportBody(res,added);
+ });
+}
+/* ---------- Pronunciation (say-it cards) ---------- */
+let lastRecUrl=null;
+function pronAvailable(){ return !!(COACH.info.pron&&S.settings.mic&&REC.supported()&&navigator.onLine!==false); }
+function soundTip(w){ w=String(w).toLowerCase();
+ if(/th/.test(w))return ["'th': put the tip of your tongue lightly between your teeth.","th: জিভের ডগা আলতো করে দাঁতের ফাঁকে।"];
+ if(/v/.test(w))return ["'v': rest your top teeth gently on your bottom lip.","v: উপরের দাঁত নিচের ঠোঁটে আলতো করে।"];
+ if(/w/.test(w))return ["'w': round your lips like a small 'o' — no teeth.","w: ঠোঁট গোল করুন — দাঁত লাগবে না।"];
+ if(/z/.test(w))return ["'z': buzz like a bee — not 'j'.","z: মৌমাছির গুঞ্জন — 'জ' নয়।"];
+ if(/^s[ptkcmnlw]/.test(w))return ["Start straight with 'sss' — no little 'i' before it.","শুরুতে 'ই' নয় — সরাসরি 'স্‌স্‌'।"];
+ if(/r/.test(w))return ["British English often drops the 'r' at the end of a word or before a consonant.","শেষের 'r' ব্রিটিশরা প্রায় বলে না।"];
+ return ["Listen to the voice slowly, copy it, then try again.","আস্তে শুনে হুবহু নকল করুন, তারপর আবার।"]; }
+function pronResultHTML(r,text){
+ if(!r||!r.words||!r.words.length) return `<div class="tip">I couldn't hear you clearly. Try again, holding the phone a little closer. 😊</div>`;
+ const sc=r.score||0; const stars=sc>=85?5:sc>=70?4:sc>=55?3:2;
+ const msg=sc>=85?["🌟 Excellent — very clear British English!","দারুণ! খুব স্পষ্ট!"]:sc>=70?["👏 Very good! Just polish the coloured words.","খুব ভালো! রঙিন শব্দগুলো একটু ঝালিয়ে নিন।"]:sc>=55?["👍 Good! Let's practise a couple of sounds.","ভালো! কয়েকটা আওয়াজ অনুশীলন করি।"]:["😊 Good try! Listen once more and copy the voice — you'll get there.","ভালো চেষ্টা! আর একবার শুনে নকল করুন — হয়ে যাবে।"];
+ const weak=r.words.filter(w=>w.error==='Omission'||w.score<70);
+ const chips=r.words.map(w=>{ const cls=w.error==='Omission'?'m':w.score>=80?'g':w.score>=60?'a':'r'; return `<button class="pw ${cls}" data-act="say" data-arg="slow" data-text="${esc(w.w)}">${esc(w.w)}</button>`; }).join(' ');
+ const tips=weak.slice(0,2).map(w=>{ const [en,bn]=soundTip(w.w); return `<div class="fix soft"><b>${esc(w.w)}</b>${w.error==='Omission'?' <span class="small muted">(missed)</span>':''} <button class="icon-btn sm" data-act="say" data-arg="slow" data-text="${esc(w.w)}">🔊</button><div class="small" style="margin-top:4px">💡 ${esc(en)}</div><div class="small bn bnh muted">${esc(bn)}</div></div>`; }).join('');
+ return `<div class="stars">${'⭐'.repeat(stars)}<span style="opacity:.25">${'⭐'.repeat(5-stars)}</span></div>
+  <div class="rep-head" style="font-size:1.05rem">${msg[0]}</div><div class="bn bnh small muted">${msg[1]}</div>
+  <div class="who mt">Each word (tap one to hear it):</div><div>${chips}</div>
+  <div class="small muted">🟢 clear · 🟡 nearly · 🔴 practise this one${r.words.some(w=>w.error==='Omission')?' · grey = missed':''}</div>
+  ${tips}
+  <div class="row mt"><button class="btn btn-sec" data-act="playme">▶ Hear yourself</button><button class="btn btn-soft" data-act="say" data-text="${esc(text)}">🔊 Hear the voice</button></div>
+  <div class="mt"><span class="coach-badge">🤖 Pronunciation checked by your AI coach</span></div>`;
+}
+function typedBox(itId){ return `<button class="linkbtn" data-act="typeopen">✍️ Or type what you said, and I'll check it</button>
+ <div id="typebox" style="display:none"><textarea id="typed" placeholder="Type your sentences here…" style="min-height:110px;font-size:1rem"></textarea>
+ <button class="btn btn-sec mt" data-act="checktyped" data-arg="${esc(itId||'')}">✏️ Check my English</button><div id="typedrep"></div></div>`; }
+function startMic(text,btn){
+ const fb=document.getElementById('micfb'); if(!SR||!fb)return; const free=!!btn.dataset.free;
+ if(free){
+  if(talk){ btn.disabled=true; btn.textContent='⏳ Checking…'; stopTalk((t,err)=>{ btn.disabled=false; btn.textContent='🎤 Speak again';
+     if(err&&!t){ fb.textContent="That's fine — the phone can't listen here. Type what you said below instead."; btn.remove(); return; }
+     showReport(t,fb,SES&&SES.q[SES.i]&&SES.q[SES.i].it.id); }); return; }
+  if(!startTalk()){ fb.textContent="The phone can't listen here — type what you said below instead."; btn.remove(); return; }
+  btn.textContent="✋ I've finished — check it"; fb.innerHTML='<span class="muted">🎙️ Listening — take your time…</span>'; return;
+ }
+ try{synth&&synth.cancel();}catch(e){} try{ if(recog)recog.abort(); }catch(e){}
+ try{ recog=new SR(); }catch(e){ micBroken=true; fb.textContent="That's fine — just say it out loud. 😊"; btn.remove(); return; }
+ recog.lang='en-GB'; recog.interimResults=false; recog.maxAlternatives=3; if(free)recog.continuous=false;
+ btn.disabled=true; btn.textContent='🎙️ Listening… speak now'; fb.textContent='';
+ let got=false;
+ recog.onresult=e=>{ got=true; const alts=[]; for(let i=0;i<e.results[0].length;i++)alts.push(e.results[0][i].transcript);
+   if(free){ fb.innerHTML=`🌟 Lovely — you made your own sentence!<div class="small muted" style="font-weight:400">I heard: “${esc(alts[0])}”</div>`; return; }
+   let best=0,bestT=''; alts.forEach(a=>{const sc=overlap(text,a); if(sc>best){best=sc;bestT=a;}});
+   if(best>=0.75) fb.innerHTML='🌟 Lovely! Very clear.<div class="bn bnh small muted">খুব সুন্দর বলেছেন!</div>';
+   else if(best>=0.45) fb.innerHTML=`👍 Good — nearly all there!<div class="small muted" style="font-weight:400">I heard: “${esc(bestT)}”</div><div class="small muted" style="font-weight:400">Listen once more and try again, if you like.</div>`;
+   else fb.innerHTML="😊 Good try! The phone didn't catch all of it — that's normal, phones are fussy. Listen once more, or just carry on.";
+ };
+ recog.onerror=e=>{ if(['not-allowed','service-not-allowed','audio-capture'].includes(e.error)){ micBroken=true; fb.textContent="That's fine — just say it out loud. Speaking is what matters. 😊"; btn.remove(); return; }
+   fb.textContent="I couldn't hear clearly. That's alright — try once more, or carry on."; };
+ recog.onend=()=>{ if(document.body.contains(btn)){btn.disabled=false;btn.textContent='🎤 Try again';} if(!got&&!fb.textContent)fb.textContent="I didn't hear anything. Tap and speak a little louder — or just carry on."; };
+ try{recog.start();}catch(e){ micBroken=true; fb.textContent="That's fine — just say it out loud. 😊"; btn.remove(); }
+}
+
+/* ---------------- Scheduling ---------------- */
+let SES=null; let CS={};
+function newCS(){ CS={hintShown:false,revealed:false,hint:false,chosen:null,order:null,auto:false,showWords:false,placed:null,wrong:0,shake:-1,turn:0,misses:0,dlgDone:false,showEx:false}; }
+const gapDays=()=>S.lastDay==null?0:dayNum()-S.lastDay;
+const learnedCount=()=>Object.keys(S.cards).length;
+const allLearned=()=>!ITEMS.some(i=>!S.cards[i.id]);
+function isRevisionDay(){ const n=S.lastDay===dayNum()?S.days:(S.days||0)+1; return n>=7&&n%7===0; }
+function finalWeeks(){ const l=daysLeft(); return l!=null&&l>0&&l<=35; }
+function newQuota(){ const t=dayNum(); let q=+S.settings.newPerDay||3; const l=daysLeft(); if(l!=null&&l>0&&l<=7)q=Math.min(q,1);
+ const done=S.newToday&&S.newToday.day===t?S.newToday.n:0; return Math.max(0,q-done); }
+function nextNew(n){ let pool=ITEMS.filter(i=>!S.cards[i.id]); if(finalWeeks()){ const pri=i=>isTravel(i)||i.ln.part===5; pool=pool.filter(pri).concat(pool.filter(i=>!pri(i))); } const out=[]; for(const it of pool){ if(out.length>=n)break; out.push(it); if(it.t==='roleplay'||it.t==='dialog')break; } return out; }
+function dueItems(){ const t=dayNum(); return ITEMS.filter(it=>S.cards[it.id]&&S.cards[it.id].due<=t).sort((a,b)=>S.cards[a.id].due-S.cards[b.id].due||S.cards[a.id].box-S.cards[b.id].box); }
+function refreshPicks(n,exclude){ if(n<=0)return []; const t=dayNum(); const fin=finalWeeks();
+ const pool=ITEMS.filter(i=>{const c=S.cards[i.id]; return c&&i.t!=='roleplay'&&!exclude.has(i.id)&&c.due>t&&(t-(c.last||0))>=2;});
+ const sc=i=>{const c=S.cards[i.id]; return (c.last||0)+c.box*4-(fin&&isTravel(i)?40:0)+Math.random()*3;};
+ return pool.sort((a,b)=>sc(a)-sc(b)).slice(0,n); }
+const REV_TARGET={normal:12,rev:18,tired:6};
+function planToday(mode){
+ const rev=mode==='normal'&&isRevisionDay(); const gap=gapDays();
+ let revCap=mode==='tired'?6:rev?22:18; let newN=(mode==='tired'||rev)?0:newQuota();
+ if(gap>=3){revCap=Math.min(revCap,10);newN=Math.min(newN,1);}
+ let due=dueItems(); if(due.length>40)newN=Math.min(newN,1); else if(due.length>25)newN=Math.min(newN,2);
+ { const big={}; due=due.filter(i=>{ if(i.t==='roleplay'||i.t==='dialog'){ if(big[i.t])return false; big[i.t]=1; } return true; }); }
+ due=due.slice(0,revCap);
+ const target=mode==='tired'?REV_TARGET.tired:rev?REV_TARGET.rev:REV_TARGET.normal;
+ const refresh=refreshPicks(Math.max(0,target-due.length),new Set(due.map(i=>i.id)));
+ return {rev,due,refresh,fresh:nextNew(newN)};
+}
+function buildSession(mode){
+ const {rev,due,refresh,fresh}=planToday(mode);
+ const reviews=due.concat(refresh);
+ const warm=reviews.filter(i=>i.t!=='dialog'&&i.t!=='roleplay').sort((a,b)=>S.cards[b.id].box-S.cards[a.id].box).slice(0,3);
+ const rest=reviews.filter(x=>!warm.includes(x));
+ const q=warm.map(it=>({it,kind:'review'})); let ri=0;
+ fresh.forEach(it=>{ q.push({it,kind:'learn'}); for(let k=0;k<2&&ri<rest.length;k++)q.push({it:rest[ri++],kind:'review'}); });
+ fresh.filter(it=>!['dialog','speak','roleplay'].includes(it.t)).forEach(it=>q.push({it,kind:'check'}));
+ while(ri<rest.length)q.push({it:rest[ri++],kind:'review'});
+ return {q,rev};
+}
+function buildExtra(){ const t=dayNum(); const seen=ITEMS.filter(it=>S.cards[it.id]&&S.cards[it.id].last!==t); seen.sort((a,b)=>(S.cards[a.id].box*3+(S.cards[a.id].last||0)/30)-(S.cards[b.id].box*3+(S.cards[b.id].last||0)/30)||(Math.random()-.5)); return seen.slice(0,8).map(it=>({it,kind:'extra'})); }
+function startSession(mode,lessonNum){
+ let q=[],rev=false;
+ if(mode==='preview'){ const l=LESSONS[lessonNum-1]; q=l.items.map(it=>({it,kind:'preview'})); }
+ else if(mode==='extra') q=buildExtra();
+ else ({q,rev}=buildSession(mode));
+ SES={q,i:0,mode,rev,lessonNum,start:Date.now(),hidden:0,hiddenAt:null,misses:0,streak:0,calms:0,done:0,newIds:[],ended:false,reason:'',
+      cap:(mode==='tired'?5:mode==='extra'?7:mode==='preview'?999:+S.settings.minutes)*60000};
+ newCS();
+}
+document.addEventListener('visibilitychange',()=>{ if(!SES)return; if(document.hidden)SES.hiddenAt=Date.now(); else if(SES.hiddenAt){SES.hidden+=Date.now()-SES.hiddenAt;SES.hiddenAt=null;} });
+const elapsed=()=>Date.now()-SES.start-SES.hidden;
+function markPractised(){ const t=dayNum(); if(S.lastDay!==t){S.days=(S.days||0)+1;S.lastDay=t;} }
+function interval(box){ let iv=INTERVALS[box]; const l=daysLeft(); if(l!=null&&l>0&&l<=120) iv=Math.min(iv,Math.max(2,Math.floor(l/3))); return iv; }
+function grade(e,ok){
+ const t=dayNum(); const id=e.it.id; let c=S.cards[id];
+ if(e.kind==='learn'){ S.cards[id]={box:1,due:t+1,seen:1,lapses:0,last:t}; if(!S.newToday||S.newToday.day!==t)S.newToday={day:t,n:0}; S.newToday.n++; SES.newIds.push(id); return; }
+ if(!c)return; c.last=t;
+ if(e.kind==='check'||e.kind==='retry'){ if(!ok)c.due=t+1; return; }
+ if(e.kind==='extra'){ if(!ok){c.box=Math.max(1,c.box-1);c.due=Math.min(c.due,t+1);} else if(c.due<=t+1){c.due=t+interval(c.box);} return; }
+ c.seen=(c.seen||0)+1;
+ if(ok){ c.box=Math.min(INTERVALS.length-1,c.box+1); c.due=t+interval(c.box); }
+ else { c.box=Math.max(1,Math.floor(c.box/2)); c.due=t+1; c.lapses=(c.lapses||0)+1; }
+}
+function afterAnswer(ok){
+ const e=SES.q[SES.i];
+ if(SES.mode==='preview'){ SES.done++; advance(); return; }
+ grade(e,ok); markPractised(); SES.done++; save();
+ if(!ok&&(e.kind==='review'||e.kind==='extra')&&e.it.t!=='dialog') SES.q.splice(Math.min(SES.i+3,SES.q.length),0,{it:e.it,kind:'retry'});
+ if(ok)SES.streak=0; else{SES.streak++;SES.misses++;}
+ if(SES.streak>=2){
+  SES.streak=0; SES.calms++;
+  if(SES.calms>=2||SES.misses>=6){ endSession('tired'); return; }
+  const fut=SES.q.slice(SES.i+1); const learnIds=new Set(fut.filter(x=>x.kind==='learn').map(x=>x.it.id));
+  let keep=fut.filter(x=>!(x.it&&learnIds.has(x.it.id)&&(x.kind==='learn'||x.kind==='check')));
+  let bi=-1,bb=-1; keep.forEach((x,k)=>{ if(x.kind==='review'&&x.it.t!=='dialog'){const b=S.cards[x.it.id].box; if(b>bb){bb=b;bi=k;}} });
+  if(bi>0){const [easy]=keep.splice(bi,1); keep.unshift(easy);}
+  SES.q=SES.q.slice(0,SES.i+1).concat([{kind:'calm'}],keep);
+ }
+ advance();
+}
+function advance(){
+ clearInterval(timerInt); timerRunning=false; abortTalk(); if(REC.active)REC.cancel(); SES.i++; newCS();
+ if(SES.i>=SES.q.length){ endSession('complete'); return; }
+ if(elapsed()>=SES.cap&&SES.q[SES.i].kind!=='calm'){ endSession('time'); return; }
+ render(); window.scrollTo(0,0);
+}
+function endSession(reason){
+ if(!SES)return; SES.ended=true; SES.reason=reason; try{synth&&synth.cancel();}catch(e){}
+ if(SES.mode==='preview'){ const n=SES.lessonNum; SES=null; go('lesson-'+n); return; }
+ if(reason!=='rest'&&SES.done>0&&SES.mode!=='extra') S.lastDoneDay=dayNum();
+ save(); go('well-done');
+}
+
+/* ---------------- Router ---------------- */
+const app=document.getElementById('app');
+function route(){ return (location.hash||'#home').slice(1)||'home'; }
+function go(h){ if(route()===h)render(); else location.hash=h; }
+window.addEventListener('hashchange',()=>{render();window.scrollTo(0,0);});
+function applyLook(){ document.documentElement.style.setProperty('--fs',S.settings.size==='xl'?'24px':'21px'); document.body.classList.toggle('no-bn',!S.settings.bengali); }
+let pendingSpeak=null;
+function render(){
+ applyLook(); const r=route(); let html='';
+ document.querySelectorAll('.overlay').forEach(o=>o.remove());
+ if(r==='practice') html=viewPractice();
+ else if(r==='well-done') html=viewDone();
+ else if(r==='phrases') html=viewPhrases();
+ else if(r==='journey') html=viewJourney();
+ else if(r==='family') html=viewFamily();
+ else if(r==='course') html=viewCourse();
+ else if(r==='build') html=viewBuilder();
+ else if(r.startsWith('lesson-')) html=viewLesson(parseInt(r.slice(7),10));
+ else html=viewHome();
+ if(html!==null) app.innerHTML=`<div class="fade" style="display:flex;flex-direction:column;flex:1">${html}</div>`;
+ if(pendingSpeak&&S.settings.autoplay){ const t=pendingSpeak; setTimeout(()=>speak(t),350);} pendingSpeak=null;
+ const sel=document.getElementById('voiceSel'); if(sel)fillVoiceSelect(sel);
+}
+
+/* ---------------- Views: home, setup, mood ---------------- */
+function greeting(){ const h=new Date().getHours(); if(h<12)return['Good morning','সুপ্রভাত']; if(h<17)return['Good afternoon','নমস্কার']; return['Good evening','শুভ সন্ধ্যা']; }
+function selectHTML(id,opts,val,data){ return `<select id="${id}" ${data?`data-set="${data}"`:''}>${opts.map(([v,l])=>`<option value="${esc(v)}" ${String(v)===String(val)?'selected':''}>${esc(l)}</option>`).join('')}</select>`; }
+function viewSetup(){
+ const st=S.settings;
+ return `<div class="center mt2"><div style="font-size:3rem">🌼</div><h1>Welcome to Cholo!</h1><p>Speak English with confidence</p><p class="bn muted">চলো! আত্মবিশ্বাসের সাথে ইংরেজি বলি।</p></div>
+ <div class="card mt">
+  <p class="small muted" style="margin-top:0">A family member can help fill this in. You can change it later in Settings.</p>
+  <label for="su-name">Your name · আপনার নাম</label><input id="su-name" value="${esc(st.name)}" autocomplete="off" placeholder="e.g. Mita">
+  <label for="su-home">Where do you live? · আপনি কোথায় থাকেন?</label><input id="su-home" value="${esc(st.home)}" autocomplete="off">
+  <label for="su-who">Who will you visit in the UK? · কার কাছে যাবেন?</label>${selectHTML('su-who',[['son','My son · ছেলে'],['daughter','My daughter · মেয়ে'],['family','My family · পরিবার']],st.who)}
+  <label for="su-city">Which city? · কোন শহরে?</label><input id="su-city" value="${esc(st.city)}" autocomplete="off">
+  <label for="su-stay">For how long? · কতদিন?</label>${selectHTML('su-stay',Object.keys(STAY).map(k=>[k,STAY[k].en]),st.stay)}
+  <label for="su-trip">Travel date (optional) · কবে যাবেন?</label><input id="su-trip" type="date" value="${esc(st.trip)}">
+  <div class="small muted mt">If you add a date, the last weeks before it give extra practice of the travel lessons. The course carries on after it either way.</div>
+  <button class="btn btn-sec mt2" data-act="test-voice">🔊 Test the British voice</button>
+ </div>
+ <div class="bottom"><button class="btn btn-pri" data-act="setup-done">Let's begin ➜</button>
+ <button class="linkbtn" data-act="go" data-arg="course">For family: look through all the lessons first</button></div>`;
+}
+function viewHome(){
+ const st=S.settings; const [g,gbn]=greeting(); const t=dayNum(); const done=S.lastDoneDay===t;
+ const tip=TIPS[((t%TIPS.length)+TIPS.length)%TIPS.length]; const pl=planToday('normal');
+ const nRev=pl.due.length+pl.refresh.length, nNew=pl.fresh.length;
+ const planLine=pl.rev?'🌟 Revision day — no new lessons, only revising':(nRev+nNew===0?'🔁 Revise older lessons':`🔁 ${nRev} to revise${nNew?` · ✨ ${nNew} new`:''}`);
+ return `<div class="mt"><h1>${g}${st.name?', '+esc(st.name):''}! 🌼</h1><div class="bn bnh muted">${gbn}</div></div>
+ <div class="hero mt2">
+  ${done?`<div style="font-size:1.25rem;font-weight:700">✅ Today's practice is done</div><div class="bn muted">আজকের অনুশীলন শেষ — শাবাশ!</div>
+     <button class="btn btn-pri mt2" data-act="extra">🔁 Revise a little more</button>`
+   :`<div style="font-size:1.25rem;font-weight:700">Today's practice</div><div class="muted">${planLine}</div><div class="muted small">About ${esc(st.minutes)} minutes · <span class="bn">আগে ঝালিয়ে নেওয়া, তারপর নতুন</span></div>
+     <button class="btn btn-pri mt2" data-act="start" style="font-size:1.25rem">▶ Start</button>`}
+ </div>
+ <div class="row mt">
+  <button class="btn btn-sec btn-col" data-act="go" data-arg="phrases"><span style="font-size:1.4rem">📖</span><span>My phrases</span></button>
+  <button class="btn btn-sec btn-col" data-act="extra" ${learnedCount()?'':'disabled style="opacity:.5"'}><span style="font-size:1.4rem">🔁</span><span>Revise</span></button>
+ </div>
+ <div class="row mt">
+  <button class="btn btn-sec btn-col" data-act="go" data-arg="build"><span style="font-size:1.4rem">🧩</span><span>Build sentences</span></button>
+  <button class="btn btn-sec btn-col" data-act="go" data-arg="journey"><span style="font-size:1.4rem">🗺️</span><span>My journey</span></button>
+ </div>
+ <div class="card mt">
+  <div class="chip gold">💡 Tip of the day</div>
+  <div>${esc(tip.en)}</div><div class="bn bnh muted" style="margin-top:6px">${esc(tip.bn)}</div>
+  ${tip.say?`<button class="icon-btn mt" data-act="say" data-text="${esc(tip.say)}">🔊 Listen</button>`:''}
+ </div>
+ <div class="bottom center small muted">${learnedCount()?`🗓️ Days practised: <b>${S.days||0}</b> · 💬 Learned: <b>${learnedCount()}</b>`:''}
+  <div class="row" style="gap:0"><button class="linkbtn" data-act="go" data-arg="family">⚙️ Settings</button><button class="linkbtn" data-act="go" data-arg="course">📚 All lessons</button></div>
+  <div class="small muted">(for family)</div></div>`;
+}
+function viewMood(){
+ const gap=gapDays(); const rev=isRevisionDay();
+ return `<div class="topbar"><button class="pill" data-act="go" data-arg="home">← Home</button></div>
+ ${gap>=3&&S.lastDay!=null?`<div class="card"><b>Welcome back! 🌼</b><div class="small">We'll start gently today.</div><div class="bn bnh small muted">আবার স্বাগতম! আজ ধীরে ধীরে শুরু করি।</div></div>`:''}
+ ${rev?`<div class="card mt"><b>🌟 Today is a revision day</b><div class="small">No new lessons — we'll bring back older ones so they stay strong.</div><div class="bn bnh small muted">আজ নতুন কিছু নেই — পুরোনোগুলো ঝালিয়ে নেওয়ার দিন।</div></div>`:''}
+ ${allLearned()?`<div class="card mt"><b>🎉 You've learned every lesson!</b><div class="small">Daily practice keeps them fresh and keeps your confidence growing.</div></div>`:''}
+ <div class="mt2"><h1>How are you feeling today?</h1><div class="bn bnh muted">আজ কেমন লাগছে?</div></div>
+ <div class="stack mt2">
+  <button class="btn btn-pri btn-col" data-act="mood" data-arg="normal" style="min-height:84px">😊 Good — let's go!<small>About ${esc(S.settings.minutes)} minutes</small></button>
+  <button class="btn btn-sec btn-col" data-act="mood" data-arg="tired" style="min-height:84px">😌 A bit tired — a short one<small>About 5 minutes, only old lessons</small></button>
+ </div>`;
+}
+
+/* ---------------- Views: practice cards ---------------- */
+function chipFor(e){
+ const icon=e.it.ln.icon;
+ if(e.kind==='learn') return `<span class="chip">${icon} New · নতুন</span>`;
+ if(e.kind==='preview') return `<span class="chip gold">${icon} Preview · ${esc(e.it.num)}</span>`;
+ if(e.kind==='check') return `<span class="chip">${icon} Quick check · ঝালিয়ে নিই</span>`;
+ if(e.kind==='retry') return `<span class="chip gold">${icon} Once more · আর একবার</span>`;
+ return `<span class="chip">🔁 Revision · ঝালিয়ে নেওয়া</span>`;
+}
+function topbar(){ const pct=Math.round(SES.i/Math.max(1,SES.q.length)*100);
+ return `<div class="topbar"><button class="pill" data-act="rest">${SES.mode==='preview'?'✕ Close':'⏸ Rest'}</button><div class="prog" aria-hidden="true"><i style="width:${pct}%"></i></div></div>`; }
+function tipBlocks(it){ return `${it.tip?`<div class="tip">💡 ${F_(it.tip)}</div>`:''}${it.mn?`<div class="mn bn bnh"><b>🧠 মনে রাখার উপায়</b>${F_(it.mn)}</div>`:''}`; }
+function viewPractice(){
+ if(!SES||SES.ended) return viewMood();
+ const e=SES.q[SES.i]; if(!e){ endSession('complete'); return null; }
+ if(e.kind==='calm') return topbar()+`<div class="calm"><div class="em">🌿</div><h1>Let's take a slow breath.</h1>
+   <p>Forgetting is part of learning. Every “not yet” makes the next time easier.</p>
+   <p class="bn bnh muted">একটু জিরিয়ে নিন। ভুলে যাওয়াও শেখার অংশ — প্রতিবার পরের বার আরও সহজ হয়।</p></div>
+   <div class="bottom"><button class="btn btn-pri" data-act="calm-next">Carry on gently ➜</button><button class="linkbtn" data-act="rest">Stop for today</button></div>`;
+ const it=e.it, fresh=e.kind==='learn'||e.kind==='preview';
+ let body;
+ switch(it.t){
+  case 'phrase': body=fresh?phraseLearn(e):phraseRecall(e); break;
+  case 'word': body=fresh?wordLearn(e):wordRecall(e); break;
+  case 'concept': body=fresh?conceptLearn(e):conceptRecall(e); break;
+  case 'build': body=buildCard(e); break;
+  case 'speak': body=speakCard(e); break;
+  case 'dialog': body=dialogCard(e); break;
+  case 'roleplay': body=rpCard(e); break;
+  default: body=choiceCard(e);
+ }
+ return topbar()+body;
+}
+function phraseLearn(e){
+ const it=e.it; if(!CS.auto){CS.auto=true;pendingSpeak=it.say||it.en;}
+ return `${chipFor(e)}<div class="card"><div class="big-en">${F_(it.en)}</div>${speakRow(it.say||it.en)}
+  <div class="meaning bn bnh">${F_(it.bn)}</div>${tipBlocks(it)}</div>${micBlock(it.en)}
+  <div class="bottom"><button class="btn btn-pri" data-act="next" data-arg="ok">Next ➜</button></div>`;
+}
+function phraseRecall(e){
+ const it=e.it;
+ if(!CS.revealed){
+  const w=fill(it.en).split(' '); const hint=w.slice(0,Math.min(2,Math.max(1,w.length-1))).join(' ')+' …';
+  return `${chipFor(e)}<div class="card"><div class="muted">How do you say this in English?</div>
+   <div class="huge-bn bn">${F_(it.bn)}</div>
+   ${CS.hint?`<div class="tip">💡 It starts: <b>${esc(hint)}</b></div>`:''}
+   <p class="small muted">Take your time. Say it in your head — or out loud — then tap the button.</p></div>
+   <div class="bottom"><button class="btn btn-pri" data-act="reveal">👀 Show me</button>${CS.hint?'':'<button class="linkbtn" data-act="hint">Give me a hint</button>'}</div>`;
+ }
+ return `${chipFor(e)}<div class="card"><div class="bn muted">${F_(it.bn)}</div><div class="big-en">${F_(it.en)}</div>${speakRow(it.say||it.en)}${tipBlocks(it)}</div>
+  ${micBlock(it.en)}${gradeButtons()}`;
+}
+function hlWord(it){ const w=fill(it.w); const re=new RegExp('\\b('+w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','i'); return F_(it.en).replace(re,'<span class="hl">$1</span>'); }
+function wordLearn(e){
+ const it=e.it; if(!CS.auto){CS.auto=true;pendingSpeak=it.w+'. '+it.en;}
+ return `${chipFor(e)}<div class="card"><div class="muted small">📝 New word · নতুন শব্দ</div>
+  <div class="word-big">${F_(it.w)}</div><div class="bn" style="font-size:1.15rem">${F_(it.wbn)}</div>
+  ${speakRow(it.w)}
+  <div class="who mt">In a sentence:</div><div class="big-en" style="font-size:1.3rem">${hlWord(it)}</div>
+  ${speakRow(it.en)}<div class="meaning bn bnh">${F_(it.bn)}</div>${tipBlocks(it)}</div>${micBlock(it.en)}
+  <div class="bottom"><button class="btn btn-pri" data-act="next" data-arg="ok">Next ➜</button></div>`;
+}
+function wordRecall(e){
+ const it=e.it;
+ if(!CS.revealed) return `${chipFor(e)}<div class="card"><div class="muted">What's the English word?</div>
+  <div class="huge-bn bn">${F_(it.wbn)}</div>
+  ${CS.hint?`<div class="tip">💡 It starts with <b>${esc(fill(it.w).charAt(0))}</b> and has ${fill(it.w).replace(/ /g,'').length} letters.</div>`:''}
+  <p class="small muted">Say it in your head — or out loud — then tap the button.</p></div>
+  <div class="bottom"><button class="btn btn-pri" data-act="reveal">👀 Show me</button>${CS.hint?'':'<button class="linkbtn" data-act="hint">Give me a hint</button>'}</div>`;
+ return `${chipFor(e)}<div class="card"><div class="bn muted">${F_(it.wbn)}</div><div class="word-big">${F_(it.w)}</div>${speakRow(it.w)}
+  <div class="big-en" style="font-size:1.2rem">${hlWord(it)}</div>${speakRow(it.en)}<div class="meaning bn bnh">${F_(it.bn)}</div>${tipBlocks(it)}</div>
+  ${micBlock(it.en)}${gradeButtons()}`;
+}
+function gradeButtons(){ return `<div class="bottom"><div class="row"><button class="btn btn-sec btn-col" data-act="next" data-arg="no">🌱 Not yet<small class="bn bnh">এখনো না</small></button>
+  <button class="btn btn-pri btn-col" data-act="next" data-arg="ok">😊 I knew it<small class="bn bnh">মনে ছিল</small></button></div></div>`; }
+function conceptBody(it){
+ const all=it.pattern+it.ex.map(x=>x.join(' ')).join(' ');
+ const leg=[['s','Who · কে'],['v','Action · কাজ'],['o','What / where · কী / কোথায়'],['t','When · কখন']].filter(([k])=>all.includes('{'+k+':'));
+ return `<div class="big-en">${F_(it.title)}</div><div class="bn muted">${F_(it.bnTitle)}</div>
+  <div class="pattern">${roles(it.pattern)}</div>
+  ${leg.length?`<div class="legend">${leg.map(([k,l])=>`<span class="r-${k}">■ ${l}</span>`).join('')}</div>`:''}
+  <p style="margin:6px 0">${F_(it.en)}</p><p class="bn bnh" style="margin:6px 0">${F_(it.bn)}</p>
+  ${it.ex.map(x=>`<div class="ex"><div class="ex-en"><span>${roles(x[0])}</span><button class="icon-btn sm" data-act="say" data-text="${esc(strip(x[0]))}" aria-label="Listen">🔊</button></div><div class="ex-bn bn bnh">${roles(x[1])}</div></div>`).join('')}
+  ${it.mn?`<div class="mn bn bnh"><b>🧠 মনে রাখার উপায়</b>${F_(it.mn)}</div>`:''}`;
+}
+function conceptLearn(e){
+ return `<span class="chip">📐 Grammar idea · ব্যাকরণ</span><div class="card">${conceptBody(e.it)}</div>
+ <div class="bottom"><button class="btn btn-pri" data-act="next" data-arg="ok">I understand ➜</button></div>`;
+}
+function conceptRecall(e){
+ const it=e.it;
+ if(!CS.revealed) return `${chipFor(e)}<div class="card"><div class="muted">Do you remember this grammar idea?</div><div class="big-en">${F_(it.title)}</div><div class="bn muted">${F_(it.bnTitle)}</div>
+  <p class="small muted">Think: how does it work? Can you make an example?</p></div>
+  <div class="bottom"><button class="btn btn-pri" data-act="reveal">👀 Show me</button></div>`;
+ return `${chipFor(e)}<div class="card">${conceptBody(it)}</div>${gradeButtons()}`;
+}
+function choiceCard(e){
+ const it=e.it; if(!CS.order)CS.order=shuffle(it.opts.length);
+ const answered=CS.chosen!==null; const ok=answered&&CS.chosen===it.a;
+ const optsHTML=CS.order.map(i=>{ const o=it.opts[i]; let cls='opt';
+   if(answered){ if(i===it.a)cls+=' correct'; else if(i===CS.chosen)cls+=' wrong'; else cls+=' dim'; }
+   const en=typeof o==='string'?o:o.en; const bn=typeof o==='string'?'':o.bn;
+   return `<button class="${cls}" data-act="choose" data-arg="${i}" ${answered?'disabled':''}>${answered&&i===it.a?'✓ ':''}${F_(en)}${bn?`<span class="bn bnh">${F_(bn)}</span>`:''}</button>`; }).join('');
+ const fb=answered?`<div class="feedback">${ok?pick(OK_MSG):(e.kind==='learn'||e.kind==='preview'?"🌱 This one's new — now you know!":pick(NO_MSG))}</div>`:'';
+ let head='',after='';
+ if(it.t==='listen'){
+  if(!CS.auto){CS.auto=true;pendingSpeak=it.say||it.en;}
+  head=`${chipFor(e)}<div class="card center"><div><b>👂 What did they say?</b></div><div class="bn bnh muted small">কী বলল?</div>
+   <button class="play-big" data-act="say" data-text="${esc(it.say||it.en)}" aria-label="Listen">🔊</button>
+   <button class="icon-btn light" data-act="say" data-arg="slow" data-text="${esc(it.say||it.en)}">🐢 Slowly</button>
+   ${(CS.showWords||answered)?`<div class="bubble mt" style="text-align:left">${F_(it.en)}</div>`:`<button class="linkbtn" data-act="words">Show the words</button>`}</div>`;
+  if(answered)after=tipBlocks(it);
+ } else if(it.t==='reply'){
+  if(!CS.auto){CS.auto=true;pendingSpeak=it.they;}
+  head=`${chipFor(e)}<div class="card"><div class="who">💬 Someone says:</div><div class="bubble">${F_(it.they)}</div>
+   ${speakRow(it.they)}${(answered&&it.theyBn)?`<div class="meaning bn bnh">${F_(it.theyBn)}</div>`:''}
+   <div class="mt"><b>What would you say?</b> <span class="bn bnh muted small">আপনি কী বলবেন?</span></div></div>`;
+  if(answered)after=`<div class="card mt"><div class="who">You say:</div><div class="bubble me" style="margin-left:0">${F_(it.opts[it.a])}</div>${speakRow(it.opts[it.a])}
+   ${it.bn?`<div class="meaning bn bnh">${F_(it.bn)}</div>`:''}${tipBlocks(it)}</div>${micBlock(it.opts[it.a])}`;
+ } else if(it.t==='fill'){
+  const word=answered?`<span class="blank">${F_(it.opts[it.a])}</span>`:`<span class="blank">&nbsp;?&nbsp;</span>`;
+  head=`${chipFor(e)}<div class="card"><div class="muted small">✏️ Fill the gap · খালি জায়গা পূরণ করুন</div>
+   <div class="big-en">${F_(it.text).replace('___',word)}</div>${it.bn?`<div class="meaning bn bnh">${F_(it.bn)}</div>`:''}</div>`;
+  if(answered)after=`<div class="card mt">${speakRow(fullFill(it))}${tipBlocks(it)}</div>${micBlock(fullFill(it))}`;
+ } else {
+  head=`${chipFor(e)}<div class="card"><b>✨ Which one is better English?</b><div class="bn bnh muted small">কোনটা ঠিক ইংরেজি?</div></div>`;
+  if(answered)after=`<div class="card mt">${ok?'':'<div class="small muted">People will understand both — but this one is better:</div>'}
+   <div class="big-en">${F_(it.opts[it.a])}</div>${speakRow(it.opts[it.a])}${it.bn?`<div class="meaning bn bnh">${F_(it.bn)}</div>`:''}${tipBlocks(it)}</div>${micBlock(it.opts[it.a])}`;
+ }
+ return `${head}<div class="mt">${optsHTML}</div>${fb}${after}
+  <div class="bottom">${answered?`<button class="btn btn-pri" data-act="next" data-arg="${ok?'ok':'no'}">Next ➜</button>`:''}</div>`;
+}
+function buildWords(it){ return fill(it.en).split(' ').filter(Boolean); }
+function buildCard(e){
+ const it=e.it; const w=buildWords(it);
+ if(!CS.placed){ let o; let tries=0; do{o=shuffle(w.length);tries++;}while(w.length>2&&tries<10&&o.every((v,i)=>w[v]===w[i])); CS.order=o; CS.placed=[]; CS.wrong=0; }
+ const done=CS.placed.length===w.length; const ok=CS.wrong<=2;
+ const line=CS.placed.map(i=>esc(w[i])).join(' ')+(done?'':' <span class="muted">'+'_ '.repeat(w.length-CS.placed.length)+'</span>');
+ const tiles=CS.order.filter(i=>!CS.placed.includes(i)).map(i=>`<button class="tile ${CS.shake===i?'shake':''}" data-act="tile" data-arg="${i}">${esc(w[i])}</button>`).join('');
+ return `${chipFor(e)}<div class="card"><div class="muted small">🧩 Put the words in order · শব্দগুলো সাজান</div>
+  ${it.bn?`<div class="huge-bn bn" style="font-size:1.15rem">${F_(it.bn)}</div>`:''}
+  <div class="answer-line mt">${line}</div>
+  ${done?'':`<div class="tiles">${tiles}</div><button class="linkbtn" data-act="tilehelp">Help me with the next word</button>`}
+  ${CS.wrong&&!done?`<div class="small muted mt">Remember: Who → Action → What.</div>`:''}</div>
+  ${done?`<div class="feedback">${ok?pick(OK_MSG)+' A perfect sentence!':"✅ Done! That one was tricky — we'll practise it again."}</div>
+   <div class="card mt">${speakRow(it.en)}${tipBlocks(it)}</div>${micBlock(it.en)}`:''}
+  <div class="bottom">${done?`<button class="btn btn-pri" data-act="next" data-arg="${ok?'ok':'no'}">Next ➜</button>`:''}</div>`;
+}
+function speakCard(e){
+ const it=e.it;
+ return `${chipFor(e)}<div class="card"><div class="muted small">🎤 Your turn to talk · নিজে বলুন</div>
+  <div class="big-en" style="font-size:1.3rem">${F_(it.en)}</div><div class="meaning bn bnh">${F_(it.bn)}</div>
+  ${it.tip?`<div class="tip">💡 ${F_(it.tip)}</div>`:''}
+  <p class="small muted">Take your time. Short, simple sentences are perfect.</p>
+  ${it.timer?`<div class="card mt" style="background:#FAF8F3"><button class="btn btn-soft" data-act="timer" data-arg="${it.timer}" id="tbtn">⏱️ Start ${it.timer} seconds</button><div class="timerbar"><i id="tbar"></i></div><div id="tmsg" class="small muted mt">Talk until the bar is full. Afterwards, I'll show you what to correct.</div><div id="treport"></div>${typedBox(it.id)}</div>`:''}
+  ${CS.showEx?`<div class="who mt">Example:</div><div class="bubble me" style="margin-left:0">${F_(it.ex)}</div>${speakRow(it.ex)}`:`<button class="btn btn-sec mt" data-act="showex">💡 Show me an example</button>`}</div>
+  ${it.timer?'':micBlock(it.ex,true,'🗣️ Now say your own sentences — out loud')+`<div class="say-box" style="border:none;padding-top:0;margin-top:0">${typedBox(it.id)}</div>`}
+  ${gradeButtonsSpeak()}`;
+}
+function gradeButtonsSpeak(){ return `<div class="bottom"><div class="row"><button class="btn btn-sec btn-col" data-act="next" data-arg="no">🌱 That was hard<small class="bn bnh">কঠিন লাগল</small></button>
+  <button class="btn btn-pri btn-col" data-act="next" data-arg="ok">😊 I did it<small class="bn bnh">পেরেছি</small></button></div></div>`; }
+function dialogCard(e){
+ const it=e.it; const T=it.turns;
+ let log=''; for(let k=0;k<Math.min(CS.turn,T.length);k++){ log+=`<div class="bubble sm mt">${F_(T[k].they)}</div><div class="bubble sm me mt">${F_(T[k].opts[0])}</div>`; }
+ const head=`${chipFor(e)}<div class="card"><div class="muted small">🎭 Conversation · কথোপকথন</div><div class="big-en" style="font-size:1.25rem">${F_(it.title)}</div><div class="bn bnh muted">${F_(it.bn)}</div>${log}</div>`;
+ if(CS.dlgDone){
+  const ok=CS.misses<=1;
+  return `${head}<div class="feedback">🎉 Conversation complete! ${CS.misses===0?'Every answer right!':''}</div>
+   <button class="btn btn-soft mt" data-act="dplay">🔊 Hear the whole conversation</button>
+   ${it.tip?`<div class="tip">💡 ${F_(it.tip)}</div>`:''}
+   ${micBlock(T.map(t=>t.opts[0]).join(' '),true,'🗣️ Now say your part of the conversation out loud')}
+   <div class="bottom"><button class="btn btn-pri" data-act="next" data-arg="${ok?'ok':'no'}">Next ➜</button></div>`;
+ }
+ const cur=T[CS.turn]; if(!CS.order)CS.order=shuffle(cur.opts.length);
+ if(CS.autoTurn!==CS.turn){CS.autoTurn=CS.turn;pendingSpeak=cur.they;}
+ const answered=CS.chosen!==null;
+ const opts=CS.order.map(i=>{let cls='opt'; if(answered){ if(i===0)cls+=' correct'; else if(i===CS.chosen)cls+=' wrong'; else cls+=' dim'; }
+   return `<button class="${cls}" data-act="dchoose" data-arg="${i}" ${answered?'disabled':''}>${answered&&i===0?'✓ ':''}${F_(cur.opts[i])}</button>`;}).join('');
+ return `${head}<div class="card mt"><div class="who">They say (${CS.turn+1} of ${T.length}):</div><div class="bubble">${F_(cur.they)}</div>${speakRow(cur.they)}
+   ${answered?`<div class="meaning bn bnh">${F_(cur.theyBn)}</div>`:''}<div class="mt"><b>What would you say?</b></div></div>
+  <div class="mt">${opts}</div>
+  ${answered?`<div class="feedback">${CS.chosen===0?pick(OK_MSG):pick(NO_MSG)}</div>`:''}
+  <div class="bottom">${answered?`<button class="btn btn-pri" data-act="dnext">${CS.turn+1<T.length?'Next line ➜':'Finish ➜'}</button>`:''}</div>`;
+}
+
+/* ---------------- Role-play card ---------------- */
+function rpCard(e){
+ const it=e.it, T=it.turns, lv=['','Easy · সহজ','Medium · মাঝারি','Hard · কঠিন'][it.level]||'';
+ let log=''; for(let k=0;k<Math.min(CS.turn,T.length);k++){ if(T[k].they) log+=`<div class="bubble sm mt">${F_(T[k].they)}</div>`; log+=`<div class="bubble sm me mt">${F_(T[k].ex)}</div>`; }
+ const head=`${chipFor(e)}<div class="card"><div class="muted small">🎭 Role-play · ${lv}</div><div class="big-en" style="font-size:1.25rem">${F_(it.title)}</div><div class="bn bnh muted">${F_(it.bn)}</div>
+  <div class="tip">🎬 ${F_(it.scene)}<div class="bn bnh small">${F_(it.sceneBn)}</div></div>${log}</div>`;
+ if(CS.dlgDone) return `${head}<div class="feedback">🎉 Role-play complete! Well done for speaking.</div>
+  <button class="btn btn-soft mt" data-act="rpplay">🔊 Hear the whole conversation</button>${it.tip?`<div class="tip">💡 ${F_(it.tip)}</div>`:''}${gradeButtonsSpeak()}`;
+ const cur=T[CS.turn];
+ if(cur.they&&CS.autoTurn!==CS.turn){CS.autoTurn=CS.turn;pendingSpeak=cur.they;}
+ const theyHTML=cur.they?`<div class="who">They say (${CS.turn+1} of ${T.length}):</div><div class="bubble">${F_(cur.they)}</div>${speakRow(cur.they)}<div class="meaning bn bnh">${F_(cur.theyBn)}</div>`
+  :`<div class="who">(${CS.turn+1} of ${T.length}) You start the conversation.</div>`;
+ const task=`<div class="say-box"><div class="say-title">🗣️ Your turn</div>
+  ${it.level<3?`<div style="margin-top:4px">${F_(cur.task)}</div>`:''}<div class="bn bnh ${it.level<3?'small muted':''}">${F_(cur.taskBn)}</div>
+  ${it.level===1&&!CS.hintShown?`<button class="linkbtn" data-act="rphint" style="margin-left:0">💡 Show me how</button>`:''}
+  ${it.level===1&&CS.hintShown?`<div class="bubble me mt" style="margin-left:0">${F_(cur.ex)}</div>${speakRow(cur.ex)}`:''}
+  ${talkAvailable()?`<button class="btn btn-soft mt" data-act="rpmic" id="rpmic">🎤 Answer out loud</button>`:''}
+  <button class="btn btn-sec mt" data-act="rpsaid">🗣️ I've said it out loud</button>
+  <div id="rprep"></div>${typedBox(null)}</div>`;
+ const after=`<div id="rpafter" style="display:none" class="card mt"><div class="who">One good way to say it:</div><div class="bubble me" style="margin-left:0">${F_(cur.ex)}</div>${speakRow(cur.ex)}
+  <button class="btn btn-pri mt" data-act="rpnext">${CS.turn+1<T.length?'Next ➜':'Finish ➜'}</button></div>`;
+ return `${head}<div class="card mt">${theyHTML}</div>${task}${after}`;
+}
+function rpAnswered(){ const a=document.getElementById('rpafter'); if(a&&a.style.display==='none'){ a.style.display='block'; try{a.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){} } }
+
+/* ---------------- Views: done ---------------- */
+function viewDone(){
+ if(!SES||!SES.ended) return viewHome();
+ const st=S.settings; const nm=st.name?', '+esc(st.name):'';
+ let title,sub,bn;
+ if(SES.reason==='rest'){title='🌼 Time for a rest';sub='Everything is saved. Come back whenever you like.';bn='সব সেভ করা আছে। যখন খুশি ফিরে আসুন।';}
+ else if(SES.reason==='tired'){title='💛 You worked hard today'+nm;sub="Learning sometimes feels heavy — that means your brain is growing. Rest now; tomorrow will feel easier.";bn='আজ অনেক পরিশ্রম করেছেন। বিশ্রাম নিন — কাল আরও সহজ লাগবে।';}
+ else {title='🌟 Well done'+nm+'!';sub=SES.mode==='extra'?'Extra practice done — that really helps memory.':(SES.rev?'Revision day done — your old lessons are fresh again.':'Today\'s practice is finished. See you tomorrow!');bn='আজকের অনুশীলন শেষ — শাবাশ!';}
+ const newOnes=SES.newIds.map(id=>byId[id]).filter(i=>i&&!['concept','dialog','speak','roleplay'].includes(i.t));
+ return `<div class="center mt2"><h1>${title}</h1><p>${esc(sub)}</p><p class="bn bnh muted">${bn}</p></div>
+ <div class="stats mt"><div class="stat"><b>${SES.done}</b>practised today</div><div class="stat"><b>${S.days||0}</b>days so far</div></div>
+ ${newOnes.length?`<h2>New today</h2>${newOnes.map(phraseRow).join('')}`:''}
+ <div class="bottom"><button class="btn btn-pri" data-act="home-reset">🏠 Home</button></div>`;
+}
+
+/* ---------------- Views: phrases, journey ---------------- */
+function phraseRow(it){
+ const txt=displayText(it);
+ const ctx=it.t==='reply'?`<div class="small muted">When someone says: “${F_(it.they)}”</div>`:it.t==='listen'?`<div class="small muted">You might hear:</div>`:'';
+ const mean=it.t==='listen'?it.opts[it.a].bn:it.t==='word'?it.wbn+' · '+it.bn:it.bn;
+ return `<div class="phr">${ctx}<div class="en">${it.t==='word'?`<span style="color:var(--pri)">${F_(it.w)}</span> — <span style="font-weight:400">${F_(it.en)}</span>`:F_(txt)}</div>${mean?`<div class="bn bnh muted small">${F_(mean)}</div>`:''}
+  <div class="acts"><button data-act="say" data-text="${esc(sayText(it))}">🔊 Listen</button><button data-act="show" data-text="${esc(txt)}">🔍 Show</button></div></div>`;
+}
+function viewPhrases(){
+ const seenL=LESSONS.map(l=>({l,items:l.items.filter(it=>S.cards[it.id])})).filter(g=>g.items.length);
+ const rules=ITEMS.filter(i=>i.t==='concept'&&S.cards[i.id]);
+ return `<div class="topbar"><button class="pill" data-act="go" data-arg="home">← Home</button></div>
+ <h1>📖 My phrases</h1><div class="bn bnh muted">আমার শেখা বাক্য</div>
+ <p class="small muted">Tap 🔊 to listen. Tap 🔍 Show to show the words big on screen — handy for showing someone.</p>
+ ${(S.fixes||[]).length?`<h2>✏️ My corrections</h2><p class="small muted">Mistakes the phone noticed when you spoke, and the better way to say them.</p>${S.fixes.slice().reverse().map(f=>`<div class="phr"><div class="small fx-wrong">${esc(f.w)}</div><div class="en" style="color:var(--ok)">${esc(f.r)}</div><div class="small muted">${esc(f.why)}</div><div class="acts"><button data-act="say" data-text="${esc(f.r.replace(/…/g,''))}">🔊 Listen</button></div></div>`).join('')}`:''}
+ ${rules.length?`<h2>📐 Grammar ideas</h2>${rules.map(r=>`<button class="lrow" data-act="rule" data-arg="${esc(r.id)}"><span class="ic">📐</span><span><b>${F_(r.title)}</b><span class="bn bnh small muted">${F_(r.bnTitle)}</span></span></button>`).join('')}`:''}
+ ${seenL.length?seenL.map(g=>{const its=g.items.filter(i=>!['concept','dialog','speak','roleplay'].includes(i.t)); return its.length?`<h2>${g.l.icon} ${esc(g.l.en)} <span class="bn bnh muted small">${esc(g.l.bn)}</span></h2>${its.map(phraseRow).join('')}`:'';}).join('')
+ :'<div class="card">Your phrases will appear here as you learn them. 🌱</div>'}`;
+}
+function lessonStats(l){ const n=l.items.length; const seen=l.items.filter(i=>S.cards[i.id]).length; const strong=l.items.filter(i=>S.cards[i.id]&&S.cards[i.id].box>=3).length; return {n,seen,strong}; }
+function viewJourney(){
+ const learned=learnedCount(); const strong=Object.values(S.cards).filter(c=>c.box>=3).length; const left=daysLeft();
+ let curSet=false;
+ const parts=PARTS.map(p=>{ const ls=LESSONS.filter(l=>l.part===p.n);
+  return `<h2>Part ${p.n} · ${esc(p.en)} <span class="bn bnh muted small">${esc(p.bn)}</span></h2>`+ls.map(l=>{ const {n,seen,strong}=lessonStats(l);
+   let cls='todo'; if(seen===n)cls='done'; else if(!curSet){cls='cur';curSet=true;}
+   return `<div class="stop ${cls}"><div class="dot">${cls==='done'?'✓':l.icon}</div><div style="flex:1"><b>${esc(fill(l.en))}</b> <span class="bn bnh muted small">${esc(l.bn)}</span>
+    <div class="bar"><i style="width:${Math.round(seen/n*100)}%"></i></div><div class="small muted">${seen} of ${n} learned${strong?` · ⭐ ${strong} strong`:''}</div></div></div>`; }).join(''); }).join('');
+ return `<div class="topbar"><button class="pill" data-act="go" data-arg="home">← Home</button></div>
+ <h1>🗺️ My journey</h1><div class="bn bnh muted">ধাপে ধাপে এগিয়ে চলা</div>
+ ${left!=null&&left>0?`<div class="card mt">🛫 <b>${left} days</b> until the trip${left<=35?' — extra travel practice is on!':''}</div>`:''}
+ <div class="stats mt"><div class="stat"><b>${S.days||0}</b>days practised</div><div class="stat"><b>${learned}</b>of ${ITEMS.length} learned</div><div class="stat"><b>${strong}</b>⭐ strong</div></div>
+ ${parts}
+ <div class="stop"><div class="dot">🌳</div><div><b>And on and on…</b><div class="small muted">After the last lesson, daily practice keeps everything fresh.</div></div></div>
+ <button class="btn btn-sec mt" data-act="go" data-arg="course">📚 See every lesson</button>`;
+}
+
+/* ---------------- Views: course browser (for family) ---------------- */
+function viewCourse(){
+ return `<div class="topbar"><button class="pill" data-act="back-from-course">← Back</button></div>
+ <h1>📚 All lessons</h1>
+ <p class="small muted">Every lesson in the course, in the order she meets them: about 3 new a day on top of daily revision, plus a revision-only day every 7th day. Tap a lesson to see everything in it, or try it out. Numbers like <b>12.3</b> make it easy to ask for changes.</p>
+ <div class="small muted">${ITEMS.length} items in ${LESSONS.length} lessons.</div>
+ ${PARTS.map(p=>`<h2>Part ${p.n} · ${esc(p.en)} <span class="bn bnh muted small">${esc(p.bn)}</span></h2>`+
+   LESSONS.filter(l=>l.part===p.n).map(l=>{const {n,seen}=lessonStats(l); return `<button class="lrow" data-act="go" data-arg="lesson-${l.num}"><span class="ic">${l.icon}</span><span style="flex:1"><b>${l.num} · ${esc(fill(l.en))}</b><span class="small muted">${esc(l.bn)} · ${n} items${seen?` · ${seen} learned`:''}</span></span><span class="muted">›</span></button>`;}).join('')).join('')}`;
+}
+function itemSummary(it){
+ const head=`<div><span class="num">${it.num}</span><span class="badge">${TYPE_LABEL[it.t]}</span></div>`;
+ const extra=`${it.tip?`<div class="small mt">💡 ${F_(it.tip)}</div>`:''}${it.mn?`<div class="small bn bnh" style="margin-top:4px">🧠 ${F_(it.mn)}</div>`:''}`;
+ const say=t=>`<button class="icon-btn sm" data-act="say" data-text="${esc(t)}">🔊</button>`;
+ let b='';
+ switch(it.t){
+  case 'phrase': b=`<b>${F_(it.en)}</b> ${say(it.say||it.en)}<div class="bn muted">${F_(it.bn)}</div>`; break;
+  case 'word': b=`<b style="color:var(--pri);font-size:1.15rem">${F_(it.w)}</b> <span class="bn muted">${F_(it.wbn)}</span> ${say(it.w)}<div>${hlWord(it)} ${say(it.en)}</div><div class="bn muted">${F_(it.bn)}</div>`; break;
+  case 'listen': b=`They say: <b>“${F_(it.en)}”</b> ${say(it.say||it.en)}<div>✓ ${F_(it.opts[0].en)} <span class="bn muted">${F_(it.opts[0].bn)}</span></div>${it.opts.slice(1).map(o=>`<div class="x">${F_(o.en)}</div>`).join('')}`; break;
+  case 'reply': b=`They say: “${F_(it.they)}” <span class="bn muted">${F_(it.theyBn)}</span><div>✓ <b>${F_(it.opts[0])}</b> ${say(it.opts[0])} <span class="bn muted">${F_(it.bn)}</span></div>${it.opts.slice(1).map(o=>`<div class="x">${F_(o)}</div>`).join('')}`; break;
+  case 'grammar': b=`✓ <b>${F_(it.opts[0])}</b> ${say(it.opts[0])}<div class="x">${F_(it.opts[1])}</div><div class="bn muted">${F_(it.bn)}</div>`; break;
+  case 'fill': b=`${F_(it.text).replace('___','<b class="blank">'+F_(it.opts[0])+'</b>')} ${say(fullFill(it))}<div class="x">${it.opts.slice(1).map(F_).join(' · ')}</div><div class="bn muted">${F_(it.bn)}</div>`; break;
+  case 'build': b=`<b>${F_(it.en)}</b> ${say(it.en)}<div class="bn muted">${F_(it.bn)}</div><div class="small muted">She taps the words in the right order.</div>`; break;
+  case 'concept': b=conceptBody(it); return `<div class="sum">${head}${b}</div>`;
+  case 'speak': b=`<b>${F_(it.en)}</b>${it.timer?` <span class="badge">⏱️ ${it.timer}s</span>`:''}<div class="bn muted">${F_(it.bn)}</div><div class="small">Example: ${F_(it.ex)}</div>`; break;
+  case 'roleplay': b=`<b>${F_(it.title)}</b> <span class="badge">${['','Easy','Medium','Hard'][it.level]}</span><div class="small muted">🎬 ${F_(it.scene)}</div>${it.turns.map(t=>`<div class="small" style="margin-top:6px">${t.they?`🧑 ${F_(t.they)}<br>`:''}🎯 <i>${F_(t.task)}</i><br>🙂 <b>${F_(t.ex)}</b></div>`).join('')}`; break;
+  case 'dialog': b=`<b>${F_(it.title)}</b> <span class="bn muted">${F_(it.bn)}</span>${it.turns.map(t=>`<div class="small" style="margin-top:6px">🧑 ${F_(t.they)}<br>🙂 <b>${F_(t.opts[0])}</b> <span class="x">${F_(t.opts[1])}</span></div>`).join('')}`; break;
+ }
+ return `<div class="sum">${head}${b}${extra}</div>`;
+}
+function viewLesson(n){
+ const l=LESSONS[n-1]; if(!l) return viewCourse();
+ const p=PARTS[l.part-1];
+ return `<div class="topbar"><button class="pill" data-act="go" data-arg="course">← All lessons</button></div>
+ <div class="small muted">Part ${p.n} · ${esc(p.en)}</div>
+ <h1>${l.icon} ${l.num} · ${esc(fill(l.en))}</h1><div class="bn muted">${esc(l.bn)}</div>
+ <button class="btn btn-soft mt" data-act="preview" data-arg="${l.num}">▶ Try this lesson <small>(practice here isn't saved)</small></button>
+ ${l.items.map(itemSummary).join('')}
+ <div class="row mt2">${n>1?`<button class="btn btn-sec" data-act="go" data-arg="lesson-${n-1}">‹ Lesson ${n-1}</button>`:''}${n<LESSONS.length?`<button class="btn btn-sec" data-act="go" data-arg="lesson-${n+1}">Lesson ${n+1} ›</button>`:''}</div>`;
+}
+
+/* ---------------- Sentence builder ---------------- */
+const B_WHO=[{en:'I',bn:'আমি',p:0},{en:'You',bn:'আপনি',p:1},{en:'He',bn:'ও (পুরুষ)',p:2},{en:'She',bn:'ও (মহিলা)',p:2},{en:'We',bn:'আমরা',p:3},{en:'They',bn:'ওরা',p:4},{en:'My son',bn:'আমার ছেলে',p:2},{en:'My friend',bn:'আমার বন্ধু',p:2}];
+const B_VERB=[
+ {en:'drink',s:'drinks',bn:['খাই','খান','খায়','খাই','খায়'],o:[['tea','চা'],['coffee','কফি'],['water','জল']],mn:'বাংলায় চা "খাই", ইংরেজিতে "drink"!'},
+ {en:'eat',s:'eats',bn:['খাই','খান','খায়','খাই','খায়'],o:[['rice','ভাত'],['fish','মাছ'],['sweets','মিষ্টি']]},
+ {en:'like',s:'likes',bn:['পছন্দ করি','পছন্দ করেন','পছন্দ করে','পছন্দ করি','পছন্দ করে'],o:[['music','গান'],['London','লন্ডন'],['cooking','রান্না']]},
+ {en:'live',s:'lives',bn:['থাকি','থাকেন','থাকে','থাকি','থাকে'],o:[['in India','ভারতে'],['in London','লন্ডনে'],['near the park','পার্কের কাছে']]},
+ {en:'speak',s:'speaks',bn:['বলি','বলেন','বলে','বলি','বলে'],o:[['Bengali','বাংলা'],['English','ইংরেজি'],['Hindi','হিন্দি']]},
+ {en:'go',s:'goes',bn:['যাই','যান','যায়','যাই','যায়'],o:[['to the park','পার্কে'],['to the shops','দোকানে'],['to work','কাজে']]},
+ {en:'read',s:'reads',bn:['পড়ি','পড়েন','পড়ে','পড়ি','পড়ে'],o:[['the newspaper','খবরের কাগজ'],['books','বই']]},
+ {en:'watch',s:'watches',bn:['দেখি','দেখেন','দেখে','দেখি','দেখে'],o:[['TV','টিভি'],['the news','খবর']]},
+ {en:'want',s:'wants',bn:['চাই','চান','চায়','চাই','চায়'],o:[['a cup of tea','এক কাপ চা'],['a taxi','একটা ট্যাক্সি']]}
+];
+let BS={w:0,v:0,o:0,m:'say'};
+function builderSentence(){
+ const w=B_WHO[BS.w], v=B_VERB[BS.v], o=v.o[Math.min(BS.o,v.o.length-1)]; const third=w.p===2;
+ let en,html,bn,note='';
+ const S_=`<span class="r r-s">${esc(w.en)}</span>`, O_=`<span class="r r-o">${esc(o[0])}</span>`;
+ if(BS.m==='say'){ const vv=third?v.s:v.en; en=`${w.en} ${vv} ${o[0]}.`;
+   html=`${S_} <span class="r r-v">${third?esc(v.en)+'<span class="plus-s">'+esc(v.s.slice(v.en.length))+'</span>':esc(vv)}</span> ${O_}.`;
+   bn=`<span class="r r-s">${w.bn.split(' (')[0]}</span> <span class="r r-o">${o[1]}</span> <span class="r r-v">${v.bn[w.p]}</span>।`;
+   if(third)note=`${w.en} = one other person → add <b>${esc(v.s.slice(v.en.length))}</b>: ${esc(v.s)}.`; }
+ else if(BS.m==='not'){ const aux=third?"doesn't":"don't"; en=`${w.en} ${aux} ${v.en} ${o[0]}.`;
+   html=`${S_} <span class="r r-v">${aux} ${esc(v.en)}</span> ${O_}.`;
+   bn=`<span class="r r-s">${w.bn.split(' (')[0]}</span> <span class="r r-o">${o[1]}</span> <span class="r r-v">${v.bn[w.p]} না</span>।`;
+   note=third?`He / she / one person → <b>doesn't</b>, and the action word stays plain (no -s).`:`I / you / we / they → <b>don't</b>.`; }
+ else { const aux=third?'Does':'Do'; const who=w.en==='I'?'I':w.en.charAt(0).toLowerCase()+w.en.slice(1); en=`${aux} ${who} ${v.en} ${o[0]}?`;
+   html=`<span class="r r-v">${aux}</span> <span class="r r-s">${esc(who)}</span> <span class="r r-v">${esc(v.en)}</span> ${O_}?`;
+   bn=`<span class="r r-s">${w.bn.split(' (')[0]}</span> কি <span class="r r-o">${o[1]}</span> <span class="r r-v">${v.bn[w.p]}</span>?`;
+   note=`Questions start with <b>${aux}</b>${third?' (for he / she / one person)':''}.`; }
+ return {en,html,bn,note,mn:v.mn};
+}
+function viewBuilder(){
+ const v=B_VERB[BS.v]; const r=builderSentence();
+ const bar=(cls,arr,cur,act,lab)=>`<div class="choicebar ${cls}">${arr.map((x,i)=>`<button class="${i===cur?'on':''}" data-act="${act}" data-arg="${i}">${esc(lab(x))}</button>`).join('')}</div>`;
+ return `<div class="topbar"><button class="pill" data-act="go" data-arg="home">← Home</button></div>
+ <h1>🧩 Build sentences</h1><div class="bn bnh muted">নিজে বাক্য বানান — যত খুশি!</div>
+ <div class="card mt">
+  <div class="choicebar">${[['say','Saying'],['not','Not'],['ask','Asking']].map(([k,l])=>`<button class="${BS.m===k?'on':''}" data-act="bmode" data-arg="${k}">${l}</button>`).join('')}</div>
+  <div class="big-en" style="font-size:1.5rem;margin-top:10px">${r.html}</div>
+  <div class="ex-bn bn bnh" style="font-size:1.1rem">${r.bn}</div>
+  ${speakRow(r.en)}
+  ${r.note?`<div class="tip">💡 ${r.note}</div>`:''}
+  <div class="small muted mt">English: <span class="r-s">Who</span> → <span class="r-v">Action</span> → <span class="r-o">What</span>. <span class="bn bnh">বাংলা: কে → কী → কাজ।</span></div>
+ </div>
+ <label class="r-s">1 · Who? · কে?</label>${bar('cb-s',B_WHO,BS.w,'bw',x=>x.en)}
+ <label class="r-v">2 · Action · কাজ</label>${bar('cb-v',B_VERB,BS.v,'bv',x=>x.en)}
+ <label class="r-o">3 · What / where? · কী / কোথায়?</label>${bar('cb-o',v.o,Math.min(BS.o,v.o.length-1),'bo',x=>x[0])}
+ <button class="btn btn-sec mt2" data-act="bsurprise">🔀 Surprise me</button>
+ ${micBlock(r.en)}`;
+}
+
+/* ---------------- Settings ---------------- */
+function fillVoiceSelect(sel){ const gb=gbVoices(); const cur=S.settings.voice; const o=[['','Automatic (best British voice)']].concat(gb.map(v=>[v.name,v.name]));
+ sel.innerHTML=o.map(([v,l])=>`<option value="${esc(v)}" ${v===cur?'selected':''}>${esc(l)}</option>`).join('');
+ const w=document.getElementById('voiceWarn'); if(w)w.style.display=(synth&&voices.length&&!gb.length)||!synth?'block':'none'; }
+function viewFamily(){
+ const st=S.settings;
+ return `<div class="topbar"><button class="pill" data-act="go" data-arg="home">← Home</button></div>
+ <h1>⚙️ Settings</h1><p class="small muted">Changes save automatically.</p>
+ ${storageOk?'':'<div class="warn">This browser is not letting the app save progress. Open it from the home-screen icon or in Chrome.</div>'}
+ <button class="btn btn-soft" data-act="go" data-arg="course">📚 See all ${ITEMS.length} lessons</button>
+ <div class="card mt">
+  <label for="f-name" style="margin-top:0">Name</label><input id="f-name" data-set="name" value="${esc(st.name)}" autocomplete="off">
+  <label for="f-home">Home town (in India)</label><input id="f-home" data-set="home" value="${esc(st.home)}" autocomplete="off">
+  <label for="f-who">Visiting</label>${selectHTML('f-who',[['son','My son'],['daughter','My daughter'],['family','My family']],st.who,'who')}
+  <label for="f-city">UK city</label><input id="f-city" data-set="city" value="${esc(st.city)}" autocomplete="off">
+  <label for="f-stay">Length of stay</label>${selectHTML('f-stay',Object.keys(STAY).map(k=>[k,STAY[k].en]),st.stay,'stay')}
+  <label for="f-trip">Travel date (optional)</label><input id="f-trip" type="date" data-set="trip" value="${esc(st.trip)}">
+  <div class="small muted mt">With a date, the last 5 weeks before it add extra travel revision and bring the practice conversations forward. Without one, the course just carries on at its own pace.</div>
+ </div>
+ <div class="card mt">
+  <label for="f-min" style="margin-top:0">Daily practice length</label>${selectHTML('f-min',[[8,'About 8 minutes'],[10,'About 10 minutes'],[12,'About 12 minutes'],[15,'About 15 minutes']],st.minutes,'minutes')}
+  <label for="f-new">New lessons per day</label>${selectHTML('f-new',[[2,'2 (gentle)'],[3,'3 (normal)'],[4,'4 (faster)']],st.newPerDay,'newPerDay')}
+  <label for="f-size">Text size</label>${selectHTML('f-size',[['l','Large'],['xl','Extra large']],st.size,'size')}
+  <label for="f-rate">Speaking speed</label>${selectHTML('f-rate',[[0.75,'Slow'],[0.85,'Gentle'],[0.95,'Normal']],st.rate,'rate')}
+  <label for="f-bn">Bengali help & memory tricks</label>${selectHTML('f-bn',[['1','On'],['0','Off']],st.bengali?'1':'0','bengali')}
+  <label for="f-mic">Phone listens to her speaking</label>${selectHTML('f-mic',[['1','On'],['0','Off']],st.mic?'1':'0','mic')}
+  ${SR?'':'<div class="small muted">(This browser cannot listen — she can still practise speaking out loud.)</div>'}
+  <label for="f-auto">Play sound automatically</label>${selectHTML('f-auto',[['1','On'],['0','Off']],st.autoplay?'1':'0','autoplay')}
+ </div>
+ <div class="card mt">
+  <label for="voiceSel" style="margin-top:0">British voice</label><select id="voiceSel" data-set="voice"></select>
+  <button class="btn btn-sec mt" data-act="test-voice">🔊 Test voice</button>
+  <div id="voiceWarn" class="warn mt" style="display:none">No British voice found on this phone. Open phone <b>Settings</b> → search <b>“Text-to-speech”</b> → choose <b>Google</b> as the engine → tap ⚙️ → <b>Install voice data</b> → <b>English (United Kingdom)</b>. Then reopen this app.</div>
+ </div>
+ <div class="card mt"><b>🤖 AI coach</b>
+  <p class="small" style="margin:6px 0">${!COACH.configured()?'Not set up yet — the app uses its built-in checker. See SETUP-AI-COACH.md to switch it on.'
+   :!COACH.info.checked?'Checking…':COACH.info.online?`Connected ✓ · Grammar coach: ${COACH.info.coach?'on ✓':'off'} · Pronunciation: ${COACH.info.pron?'on ✓':'off'}`:`Can't reach the coach right now (${esc(COACH.info.err||'offline')}). The built-in checker is used meanwhile.`}</p>
+  <button class="btn btn-sec" data-act="coachtest">🔄 Test the connection</button>
+  <p class="small muted">When the coach is on, what she says is sent over the internet to be checked (speech for pronunciation; text for grammar). Nothing is stored by the app's relay.</p>
+  <details><summary class="small muted">Advanced: coach address (family only)</summary>
+   <label for="f-curl">Coach address</label><input id="f-curl" data-set="coachUrl" value="${esc(st.coachUrl)}" placeholder="(uses config.js)" autocomplete="off">
+   <label for="f-ctok">Coach token</label><input id="f-ctok" data-set="coachToken" value="${esc(st.coachToken)}" placeholder="(uses config.js)" autocomplete="off">
+  </details>
+ </div>
+ <div class="card mt"><b>💾 Saving progress</b>
+  <p class="small" style="margin-bottom:0">Progress saves by itself after every answer, in two places on this phone. Nothing to copy or remember. Just keep using the app from its home-screen icon.</p>
+  <details class="mt"><summary class="small muted">Moving to a new phone? (family only)</summary>
+   <p class="small muted">Copy this code on the old phone, then paste it on the new one.</p>
+   <textarea id="bk-out" readonly>${esc(backupCode())}</textarea>
+   <button class="btn btn-sec mt" data-act="copy-backup">📋 Copy code</button>
+   <label for="bk-in">Paste code from the old phone</label><textarea id="bk-in" placeholder="Paste code here"></textarea>
+   <button class="btn btn-sec mt" data-act="restore">Restore</button><div id="bk-msg" class="small mt"></div>
+  </details>
+ </div>
+ <div class="card mt"><button class="btn btn-sec" data-act="reset">Start again from the beginning</button></div>`;
+}
+function backupCode(){ try{ return btoa(unescape(encodeURIComponent(JSON.stringify(S)))); }catch(e){ return ''; } }
+
+/* ---------------- Actions ---------------- */
+let courseBack='home'; let timerInt=null;
+let timerRunning=false;
+function startTimer(sec,btn){
+ if(timerRunning){ finishTimer(); return; }
+ clearInterval(timerInt); const bar=document.getElementById('tbar'), msg=document.getElementById('tmsg'), rep_=document.getElementById('treport'); if(!bar)return;
+ if(rep_)rep_.innerHTML=''; const listening=startTalk();
+ let t=0; timerRunning=true; bar.style.width='0%';
+ btn.textContent=`✋ I've finished (${sec})`; msg.innerHTML=listening?'🎙️ Listening — keep talking, mistakes are fine!':'🗣️ Keep talking — mistakes are fine!';
+ timerInt=setInterval(()=>{ t++; if(!document.body.contains(bar)){clearInterval(timerInt);timerRunning=false;abortTalk();return;}
+  bar.style.width=Math.min(100,t/sec*100)+'%'; btn.textContent=`✋ I've finished (${Math.max(0,sec-t)})`; if(t>=sec) finishTimer(); },1000);
+}
+function finishTimer(){
+ clearInterval(timerInt); timerRunning=false;
+ const btn=document.getElementById('tbtn'), msg=document.getElementById('tmsg'), bar=document.getElementById('tbar'), rp=document.getElementById('treport');
+ if(bar)bar.style.width='100%'; if(btn){btn.textContent='⏱️ Go again';}
+ if(msg)msg.innerHTML=`<b style="color:var(--ok)">🌟 Well done for talking!</b> <span class="bn bnh">শাবাশ!</span>`;
+ const itId=SES&&SES.q[SES.i]&&SES.q[SES.i].it.id;
+ if(talk){ if(rp)rp.innerHTML='<div class="muted mt">⏳ Checking what you said…</div>'; stopTalk((text,err)=>{ if(err&&!text){ if(rp)rp.innerHTML='<div class="tip">The phone couldn\'t listen here. Type what you said below, and I\'ll check it.</div>'; const tb=document.getElementById('typebox'); if(tb)tb.style.display='block'; return; } showReport(text,rp,itId); }); }
+ else { if(rp)rp.innerHTML='<div class="tip">To get corrections, type what you said below — or turn on "Phone listens" in Settings.</div>'; const tb=document.getElementById('typebox'); if(tb)tb.style.display='block'; }
+}
+const A={
+ go:a=>{ if(a==='course'&&!route().startsWith('lesson-')&&route()!=='course')courseBack=route(); go(a); },
+ 'back-from-course':()=>go(courseBack||'home'),
+ start:()=>{askPersist();SES=null;go('practice');},
+ extra:()=>{ startSession('extra'); if(!SES.q.length){SES=null;go('home');return;} go('practice'); },
+ mood:a=>{ startSession(a); if(!SES.q.length){ startSession('extra'); } if(!SES.q.length){SES=null;go('home');return;} render(); },
+ preview:a=>{ startSession('preview',+a); go('practice'); },
+ say:(a,b)=>speak(b.dataset.text,{slow:a==='slow'}),
+ reveal:()=>{ CS.revealed=true; const it=SES.q[SES.i].it; if(it.t==='phrase')pendingSpeak=it.say||it.en; if(it.t==='word')pendingSpeak=it.w+'. '+it.en; render(); },
+ hint:()=>{CS.hint=true;render();},
+ words:()=>{CS.showWords=true;render();},
+ showex:()=>{CS.showEx=true;pendingSpeak=SES.q[SES.i].it.ex;render();},
+ choose:a=>{ if(CS.chosen!==null)return; CS.chosen=+a; const it=SES.q[SES.i].it; if(it.t!=='listen')pendingSpeak=it.t==='fill'?fullFill(it):it.opts[it.a]; render(); },
+ dchoose:a=>{ if(CS.chosen!==null)return; CS.chosen=+a; if(CS.chosen!==0)CS.misses++; pendingSpeak=SES.q[SES.i].it.turns[CS.turn].opts[0]; render(); },
+ dnext:()=>{ const T=SES.q[SES.i].it.turns; CS.turn++; CS.chosen=null; CS.order=null; if(CS.turn>=T.length)CS.dlgDone=true; render(); window.scrollTo(0,document.body.scrollHeight); },
+ dplay:()=>{ const T=SES.q[SES.i].it.turns; const lines=[]; T.forEach(t=>{lines.push({text:t.they,pitch:0.9});lines.push({text:t.opts[0],pitch:1.15});}); speakSeq(lines); },
+ tile:a=>{ const w=buildWords(SES.q[SES.i].it); const i=+a; const next=CS.placed.length; if(w[i]===w[next]){CS.placed.push(i);CS.shake=-1; if(CS.placed.length===w.length)pendingSpeak=SES.q[SES.i].it.en;} else {CS.wrong++;CS.shake=i;} render(); },
+ tilehelp:()=>{ const w=buildWords(SES.q[SES.i].it); const next=CS.placed.length; const j=CS.order.find(i=>!CS.placed.includes(i)&&w[i]===w[next]); if(j!=null){CS.placed.push(j);CS.wrong++;CS.shake=-1; if(CS.placed.length===w.length)pendingSpeak=SES.q[SES.i].it.en;} render(); },
+ next:a=>{ try{recog&&recog.abort();}catch(e){} afterAnswer(a==='ok'); },
+ 'calm-next':()=>advance(),
+ timer:(a,b)=>startTimer(+a,b),
+ pronrec:async(a,b)=>{ const fb=document.getElementById('micfb'); if(!fb)return; const text=b.dataset.text;
+   if(REC.active){ b.disabled=true; b.textContent='⏳ Your coach is listening…'; const wav=REC.stop();
+     try{ if(lastRecUrl)URL.revokeObjectURL(lastRecUrl); lastRecUrl=URL.createObjectURL(wav);}catch(e){}
+     fb.innerHTML='<div class="muted">⏳ Checking your pronunciation…</div>';
+     try{ const r=await COACH.pron(wav,fill(text)); fb.innerHTML=pronResultHTML(r,text); }
+     catch(e){ fb.innerHTML='<div class="tip">I couldn\'t check it just now — but well done for speaking out loud! 😊</div>'; }
+     b.disabled=false; b.textContent='🎤 Try again'; return; }
+   try{ try{synth&&synth.cancel();}catch(e){} await REC.start(15,()=>{ if(REC.active) b.click(); }); b.textContent='⏹ I\'ve finished'; fb.innerHTML='<div class="muted">🎙️ Speak now…</div>'; }
+   catch(e){ fb.innerHTML='<div class="tip">The microphone isn\'t available here — just say it out loud. 😊</div>'; b.remove(); } },
+ playme:()=>{ if(!lastRecUrl)return; try{ synth&&synth.cancel(); new Audio(lastRecUrl).play(); }catch(e){} },
+ coachtest:async(a,b)=>{ b.disabled=true; b.textContent='⏳ Testing…'; await COACH.ping(); render(); },
+ rphint:()=>{ CS.hintShown=true; pendingSpeak=SES.q[SES.i].it.turns[CS.turn].ex; render(); },
+ rpsaid:()=>rpAnswered(),
+ rpmic:(a,b)=>{ const out=document.getElementById('rprep'); if(!out)return;
+   if(talk){ b.disabled=true; b.textContent='⏳ Checking…'; stopTalk((t,err)=>{ b.disabled=false; b.textContent='🎤 Answer again';
+      if(err&&!t){ out.innerHTML='<div class="tip">The phone can\'t listen here — type your answer below, or just say it out loud.</div>'; b.remove(); return; }
+      showReport(t,out,null); rpAnswered(); }); return; }
+   if(!startTalk()){ out.innerHTML='<div class="tip">The phone can\'t listen here — type your answer below, or just say it out loud.</div>'; b.remove(); return; }
+   b.textContent="✋ I've finished"; out.innerHTML='<div class="muted mt">🎙️ Listening — take your time…</div>'; },
+ rpnext:()=>{ abortTalk(); const T=SES.q[SES.i].it.turns; CS.turn++; CS.hintShown=false; if(CS.turn>=T.length)CS.dlgDone=true; render(); window.scrollTo(0,document.body.scrollHeight); },
+ rpplay:()=>{ const T=SES.q[SES.i].it.turns; const lines=[]; T.forEach(t=>{ if(t.they)lines.push({text:t.they,pitch:0.9}); lines.push({text:t.ex,pitch:1.15}); }); speakSeq(lines); },
+ typeopen:(a,b)=>{ const t=document.getElementById('typebox'); if(t){t.style.display='block'; b.remove(); const ta=document.getElementById('typed'); if(ta)ta.focus();} },
+ checktyped:a=>{ const ta=document.getElementById('typed'); const out=document.getElementById('typedrep'); if(!ta||!out)return; showReport(ta.value,out,a||null); if(SES&&SES.q[SES.i]&&SES.q[SES.i].it&&SES.q[SES.i].it.t==='roleplay'&&ta.value.trim())rpAnswered(); },
+ rest:()=>endSession('rest'),
+ 'home-reset':()=>{SES=null;go('home');},
+ mic:(a,b)=>startMic(b.dataset.text,b),
+ show:(a,b)=>{ const d=document.createElement('div'); d.className='overlay'; d.innerHTML=`<div class="huge">${esc(fill(b.dataset.text))}</div><div class="row mt2" style="width:100%;max-width:420px"><button class="btn btn-soft" data-act="say" data-text="${esc(b.dataset.text)}">🔊 Listen</button><button class="btn btn-pri" data-act="close-ov">Close</button></div>`; document.body.appendChild(d); },
+ rule:a=>{ const it=byId[a]; if(!it)return; const d=document.createElement('div'); d.className='overlay left'; d.innerHTML=`<div style="max-width:520px;margin:0 auto;width:100%"><div class="card">${conceptBody(it)}</div><button class="btn btn-pri mt" data-act="close-ov">Close</button></div>`; document.body.appendChild(d); },
+ 'close-ov':(a,b)=>{ const o=b.closest('.overlay'); if(o)o.remove(); },
+ 'test-voice':()=>speak("Hello! Lovely to meet you. Would you like a cup of tea?"),
+ bw:a=>{BS.w=+a;render();}, bv:a=>{BS.v=+a;BS.o=0;render();}, bo:a=>{BS.o=+a;render();}, bmode:a=>{BS.m=a;render();},
+ bsurprise:()=>{BS.w=Math.floor(Math.random()*B_WHO.length);BS.v=Math.floor(Math.random()*B_VERB.length);BS.o=Math.floor(Math.random()*B_VERB[BS.v].o.length);BS.m=pick(['say','say','not','ask']);render(); speak(builderSentence().en);},
+ 'setup-done':()=>{ askPersist(); const st=S.settings; const v=id=>document.getElementById(id).value.trim(); st.name=v('su-name'); st.home=v('su-home')||'Kolkata'; st.who=v('su-who'); st.city=v('su-city')||'London'; st.stay=v('su-stay'); st.trip=v('su-trip'); st.setupDone=true; save(); go('home'); render(); },
+ 'copy-backup':(a,b)=>{ const t=document.getElementById('bk-out'); try{ navigator.clipboard.writeText(t.value).then(()=>{b.textContent='✓ Copied';},()=>{t.select();b.textContent='Selected — now copy';}); }catch(e){ t.select(); b.textContent='Selected — now copy'; } },
+ restore:()=>{ const v=document.getElementById('bk-in').value.trim(); const m=document.getElementById('bk-msg'); try{ const d=JSON.parse(decodeURIComponent(escape(atob(v)))); if(!d||!d.cards)throw 0; S=merge(d); save(); m.textContent='✓ Restored!'; setTimeout(render,700);}catch(e){ m.textContent='That code did not work. Please check it was copied fully.'; } },
+ reset:(a,b)=>{ if(b.dataset.armed){ const keep={...S.settings}; S=blank(); S.settings=keep; save(); SES=null; go('home'); } else { b.dataset.armed='1'; b.textContent='Tap again to confirm — all progress will be cleared'; b.style.borderColor='#C0392B'; } }
+};
+document.addEventListener('click',e=>{ const b=e.target.closest('[data-act]'); if(!b||b.disabled)return; const f=A[b.dataset.act]; if(f)f(b.dataset.arg,b); });
+document.addEventListener('change',e=>{ const el=e.target; const k=el.dataset&&el.dataset.set; if(!k)return; let v=el.value;
+ if(['minutes','newPerDay','rate'].includes(k))v=+v; if(['bengali','mic','autoplay'].includes(k))v=v==='1';
+ S.settings[k]=v; save(); applyLook(); if(k==='mic'&&v)micBroken=false; });
+document.addEventListener('input',e=>{ const el=e.target; const k=el.dataset&&el.dataset.set; if(['name','city','home','coachUrl','coachToken'].includes(k)){ S.settings[k]=el.value; save(); } });
+
+render();
+COACH.ping().then(()=>{ if(route()==='family'||(route()==='home'))render(); });
+window.addEventListener('online',()=>COACH.ping());
+if('serviceWorker' in navigator&&location.protocol==='https:'&&window.top===window.self){ try{ navigator.serviceWorker.register('sw.js').catch(()=>{}); }catch(e){} }
+</script>
+</body>
+</html>
