@@ -2,4 +2,4 @@
    url:   your Cloudflare Worker address, e.g. "https://cholo-coach.yourname.workers.dev"
    token: the same APP_TOKEN text you saved in the worker's settings
    Leave both empty and the app uses its built-in checker only. */
-window.CHOLO_COACH = { url: "", token: "" };
+window.CHOLO_COACH = { url: "https://chalo-coach.kundurashmi14.workers.dev", token: "cholo-ma-7429-shiuliphool" };
