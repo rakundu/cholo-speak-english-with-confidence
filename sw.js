@@ -1,4 +1,4 @@
-const C = 'cholo-v8';
+const C = 'cholo-v9';
 const CORE = ['./', 'index.html', 'content-1.js', 'content-2.js', 'content-3.js', 'content-4.js', 'content-5.js', 'content-6.js', 'content-order.js', 'checker.js', 'config.js', 'coach.js', 'manifest.json', 'icon-192.png', 'icon-512.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(C).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
